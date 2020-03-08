@@ -1,0 +1,3526 @@
+<head>
+	<meta charset="utf-8">
+	
+	<title>bitmark Sandbox</title>
+	<meta name="description" content="bitmark Sandbox">
+	
+	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+	
+	<style>
+		html, body, div, span, applet, object, iframe,
+		h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+		a, abbr, acronym, address, big, cite, code,
+		del, dfn, em, img, ins, kbd, q, s, samp,
+		small, strike, strong, sub, sup, tt, var,
+		b, u, i, center,
+		dl, dt, dd, ol, ul, li,
+		fieldset, form, label, legend,
+		table, caption, tbody, tfoot, thead, tr, th, td,
+		article, aside, canvas, details, embed, 
+		figure, figcaption, footer, header, hgroup, 
+		menu, nav, output, ruby, section, summary, textarea,
+		time, mark, audio, video {
+			margin: 0;
+			padding: 0;
+			border: 0;
+			font-size: 100%;
+			font: inherit;
+			vertical-align: baseline;
+		}
+		/* HTML5 display-role reset for older browsers */
+		article, aside, details, figcaption, figure, 
+		footer, header, hgroup, menu, nav, section {
+			display: block;
+		}
+		body {
+			line-height: 1.3;
+		}
+		ol, ul {
+			list-style: none;
+		}
+		blockquote, q {
+			quotes: none;
+		}
+		blockquote:before, blockquote:after,
+		q:before, q:after {
+			content: '';
+			content: none;
+		}
+		table {
+			border-collapse: collapse;
+			border-spacing: 0;
+		}
+		
+		html {
+			font-family: 'Roboto', sans-serif;
+			-webkit-font-smoothing: antialiased;
+			-moz-font-smoothing: antialiased;
+			-o-font-smoothing: antialiased;
+		};
+		
+	</style>
+	
+	<style>
+		pre {white-space: pre-line;}
+		.string { color: green; }
+		.number { color: darkorange; }
+		.boolean { color: blue; }
+		.null { color: magenta; }
+		.key { color: red; }
+	</style>
+	
+	<style>
+
+		.left-side > textarea {
+			color: #8ADEFF;
+			background-color: black;
+			line-height: 1.5;
+		}
+
+		.flex-container {
+			display: flex;
+			flex-wrap: wrap;
+			position:absolute;
+			top:0;
+			right:0;
+			bottom:0;
+			left:0;
+		}
+		
+		.flex-container > div {
+			background-color: #55637a;
+			min-width: 300pt;
+			width: 320pt;
+			flex-grow: 1;
+			text-align: left;
+			font-size: 16px;
+		}
+
+		.bitmarkeditor {
+			width: 100%;
+			height: 100%;
+			resize: none;
+			padding: 10px;
+			box-sizing: border-box;
+			font-family: monaco, monospace;
+			font-size: 13px;
+		}
+
+		.right-side {
+			overflow-y:auto;
+		}
+
+		.right-side {
+			overflow-y:auto;
+		}
+
+		input:focus,
+		select:focus,
+		textarea:focus,
+		button:focus {
+			outline: none;
+		}
+
+		input {
+			font-family: 'Roboto', sans-serif;
+		}
+
+		input[type="radio"] {
+			font-size: 16px;
+		}
+
+		select {
+			font-family: 'Roboto', sans-serif;
+			font-size: 16px;
+			border: 2px;
+    		border-color: #007dc1;
+    		border-style: solid;
+		}
+		
+	</style>
+	
+	
+	<style>
+		
+		.comments {
+			border-left: 6px solid rgb(255, 238, 0);
+			background-color: rgb(255, 255, 191);
+			white-space: pre-line;
+			word-wrap: break-word;
+		}
+		
+		.comments li {
+			margin: 5pt;
+		}
+		
+		.comments ul {
+			padding: 5pt;
+		}
+		
+		.warnings {
+			border-left: 6px solid orange;
+			background-color: rgb(255, 227, 175);
+			white-space: pre-line;
+			word-wrap: break-word;
+		}
+		
+		.warnings li {
+			margin: 5pt;
+		}
+		
+		.warnings ul {
+			padding: 5pt;
+		}
+		
+		.errors {
+			border-left: 6px solid rgba(255, 0, 0, 0.692);
+			background-color: rgb(255, 188, 188);
+			white-space: pre-line;
+			word-wrap: break-word;
+		}
+		
+		.errors li {
+			margin: 5pt;
+		}
+		
+		.errors ul {
+			padding: 5pt;
+		}
+		
+		.bit {
+			margin: 10pt;
+			background-color: white;
+			overflow: hidden;
+		}
+		
+		.item {
+			position: relative;
+			left: -50%;
+			-ms-transform: rotate(-45deg); /* IE 9 */
+			-webkit-transform: rotate(-45deg); /* Safari */
+			transform: rotate(-45deg);
+			padding: 25pt 30pt 2pt 30pt;
+			background-color: #007dc1;
+			color: white;
+			font-weight: bold;
+			text-align: center;
+			transform-origin: center top;
+			margin-bottom: 30pt;
+		}
+
+		.item:empty {
+   			display: none;
+		}
+		
+		.instruction:empty {
+   			display: none;
+		}
+		
+		.instruction {
+			padding: 10pt;
+			margin-top: 20pt;
+			font-size: 24px;
+			white-space: pre-line;
+			word-wrap: break-word;
+		}
+
+		.image-resource > img {
+			width: 100%;
+			display: block;
+		}
+
+		.image-resource:empty {
+   			display: none;
+		}
+		
+		.audio-resource > img {
+			width: 18pt;
+			height: 18pt;
+			display: block;
+			padding: 6pt;
+			margin-left: auto;
+			margin-right: auto;
+		}
+
+		.audio-resource:empty {
+   			display: none;
+		}
+		
+		.body {
+			padding: 10pt;
+			font-size: 16px;
+			white-space: pre-line;
+			word-wrap: break-word;
+		}
+
+		.body:empty {
+   			display: none;
+		}
+		
+		.article {
+			padding: 10pt;
+			font-size: 16px;
+			white-space: pre-line;
+			word-wrap: break-word;
+			background-color: rgb(236, 236, 236);
+		}
+
+		.article:empty {
+   			display: none;
+		}
+
+		.essay-textarea {
+			padding: 0pt;
+			font-size: 16px;
+			margin: 10pt;
+		}
+
+		.essay-textarea > textarea {
+			width: 100%;
+			height: 100%;
+			resize: none;
+			padding: 5px;
+			box-sizing: border-box;
+			background-color: #C8E7FE;
+			display: block;
+			-webkit-border-radius: 3px;
+    		border-radius: 3px;
+		}
+		
+		.cloze-container {
+			line-height: 1.9;
+		}
+
+		.multiplechoicetext-container {
+			line-height: 1.9;
+		}
+
+		.cloze-input {
+			padding:4px; 
+    		border:0; 
+    		-webkit-border-radius: 3px;
+    		border-radius: 3px;
+			max-width: calc(100% - 8px);
+
+			font-size: 16px;
+			background-color: #C8E7FE;
+			display:inline-block;
+		}
+
+		.grouped:empty {
+   			display: none;
+		}
+
+		.grouped {
+			padding: 10pt;
+    		background-color: #c8e7fe;
+    		margin-top: 15pt;
+			margin-bottom: 10pt;
+		}
+		
+		.input-container, .select-container {
+			display: inline-block;
+			max-width: 100%;
+    		position: relative;
+		}
+
+		.interview-container {
+    		position: relative;
+			width: 100%;
+		}
+
+		.interview-textarea {
+			padding:6px; 
+    		border:0; 
+    		-webkit-border-radius: 3px;
+    		border-radius: 3px;
+
+			font-size: 16px;
+			background-color: #C8E7FE;
+			display:inline-block;
+
+			resize: none;
+			box-sizing: border-box;
+			width: 100%;
+		}
+
+		.interview-body {
+			margin-top: 25pt;
+			margin-bottom: 6pt;
+		}
+
+		.match-container {
+			margin-bottom: 6pt;
+			position: relative;
+		}
+
+
+		.match-textarea {
+			display: block;
+			z-index: -10;
+			top:0;
+			width: 100%;
+
+			padding:6pt; 
+    		border:0; 
+    		-webkit-border-radius: 3pt;
+    		border-radius: 3pt;
+			font-size: 16px;
+			background-color: #C8E7FE;
+			resize: none;
+			box-sizing: border-box;
+		}
+
+		.match-front {
+			padding: 6pt 6pt 6pt 0;
+		}
+
+		.match-title {
+			padding: 0 6pt 6pt 0;
+			font-weight:bold;
+		}
+
+		.match-body, .true-false-body, .generic-body {
+			margin-top: 15pt;
+		}
+
+		.match-flex-container {
+			display: flex;
+			align-items: stretch;
+			flex-wrap: wrap;
+		}
+
+		.match-flex-container > div {
+			width: 100pt;
+			min-width: 150pt;
+		}
+		
+		.match-grouped-container {
+			display: flex;
+			align-items: stretch;
+			flex-wrap: wrap;
+		}
+
+		.match-grouped-container > div {
+			width: 100pt;
+			min-width: 150pt;
+		}
+
+		.match-grouped-container select {
+			width: 150pt;
+			min-width: 150pt;
+			margin-bottom: 2pt;
+		}
+
+		.true-false-container {
+			display: flex;
+		}
+
+		.match-grouped-front, .true-false-left {
+			flex-grow: 1; 
+			padding: 8pt 6pt 8pt 0;
+		}
+
+		.match-grouped-back {
+			flex-grow: 1; 
+			padding: 6pt 0 4pt 0;
+		}
+
+		.true-false-right {
+			padding: 6pt 6pt 6pt 6pt;
+		}
+
+		.title {
+			font-weight:bold;
+		}
+
+		.input-example-overlay {
+			display: inline-block;
+    		height: calc(100% - 1px);
+    		width: calc(100% - 4px);
+    		position: absolute;
+    		z-index: 10;
+			top: 0;
+    		left: 0;
+    		padding-left: 4px;
+			pointer-events: none;
+		}
+
+		.interview-example-overlay {
+			display: inline-block;
+    		width: calc(100% - 12px);
+    		position: absolute;
+    		z-index: 10;
+			top: 0;
+    		left: 0;
+    		padding: 6px;
+			pointer-events: none;
+			background-color: #B8E986;
+			-webkit-border-radius: 3pt;
+    		border-radius: 3pt;
+		}
+
+		.interview-example-overlay:empty {
+   			display: none;
+		}
+
+		.match-example-overlay {
+			display: inline-block;
+    		width: calc(100% - 16px);
+    		position: absolute;
+    		z-index: 10;
+			top: 0;
+    		left: 0;
+    		padding: 8px;
+			pointer-events: none;
+			background-color: #B8E986;
+			-webkit-border-radius: 3pt;
+    		border-radius: 3pt;
+		}
+
+		.match-example-overlay:empty {
+   			display: none;
+		}
+
+		.hint-container {
+			display: inline-block;
+    		position: relative;
+
+			display: inline-block;
+    		margin: 2pt 2pt -6px 4pt;
+    		vertical-align: top;
+		}
+
+
+		.footer {
+			margin-bottom: 20pt;
+		}
+
+		strong {
+			font-family: 'Roboto', sans-serif;
+			font-weight: 700;
+		}
+
+		em {
+			font-family: 'Roboto', sans-serif;
+			font-style: italic;
+		}
+
+		::-webkit-input-placeholder {
+			font-family: 'Roboto', sans-serif;
+ 			font-size: 16px;
+		}
+
+		:-webkit-placeholder {
+			font-family: 'Roboto', sans-serif;
+ 			font-size: 16px;
+		}
+
+		:-moz-placeholder { /* older Firefox*/
+			font-family: 'Roboto', sans-serif;
+			font-size: 16px;
+		}
+
+		::-moz-placeholder { /* Firefox 19+ */ 
+			font-family: 'Roboto', sans-serif;
+			font-size: 16px;
+		}
+ 
+		:-ms-input-placeholder { 
+			font-family: 'Roboto', sans-serif;
+			font-size: 16px;
+		}
+		
+	</style>
+	
+	<style>
+		
+		.parse_button {
+			background-color:#007dc1;
+			-moz-border-radius:8pt;
+			-webkit-border-radius:8pt;
+			border-radius:8pt;
+			display:inline-block;
+			cursor:pointer;
+			color:#ffffff;
+			font-family:Arial;
+			font-size:16px;
+			font-weight:bold;
+			padding:12pt 24pt;
+			text-decoration:none;
+			display: none;
+		}
+		
+	</style>
+
+	<style>
+		/* Popup container - can be anything you want */
+		.popup {
+			cursor: pointer;
+			-webkit-user-select: none;
+			-moz-user-select: none;
+			-ms-user-select: none;
+			user-select: none;
+
+		}
+		
+		/* The actual popup */
+		.popup .popuptext {
+			visibility: hidden;
+			width: 240pt;
+			margin-left: -130pt;
+			background-color: #007dc1;
+			color: white;
+			text-align: left;
+			border-radius: 4pt;
+			padding: 10pt;
+			position: absolute;
+			z-index: 1;
+			bottom: 125%;
+			left: 50%;
+		}
+
+		
+		/* Popup arrow */
+		.popup .popuptext::after {
+			content: "";
+			position: absolute;
+			top: 100%;
+			left: 50%;
+			margin-left: -5px;
+			border-width: 5px;
+			border-style: solid;
+			border-color: #007dc1 transparent transparent transparent;
+		}
+		
+		/* Toggle this class - hide and show the popup */
+		.popup .show {
+			visibility: visible;
+			-webkit-animation: fadeIn 1s;
+			animation: fadeIn 1s;
+		}
+		
+		/* Add animation (fade in the popup) */
+		@-webkit-keyframes fadeIn {
+			from {opacity: 0;} 
+			to {opacity: 1;}
+		}
+		
+		@keyframes fadeIn {
+			from {opacity: 0;}
+			to {opacity:1 ;}
+		}
+	</style>
+
+	<style>
+
+
+		.div-table{
+			display: table;
+			width: 100%;
+		}
+
+		.div-table-row {
+			display: table-row;
+		}
+
+		.div-table-cell, .div-table-head {
+			display: table-cell;
+			padding: 6px 0 6px 0;
+		}
+
+		.div-left-table-cell {
+			display: table-cell;
+			padding: 6px 6px 6px 0;
+			width: 1%;
+		}
+
+		.div-table-heading {
+			display: table-header-group;
+			font-weight: bold;
+		}
+
+		.div-table-foot {
+			display: table-footer-group;
+			font-weight: bold;
+		}
+
+		.div-table-body {
+			display: table-row-group;
+		}
+
+	</style>
+
+  <script>
+
+  //Copyright (c) 2018 Crystalline Technologies
+//
+//  Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'),
+//  to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, 
+//  and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+//
+//  The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+//
+//  THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
+//  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, 
+//  WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+var json2html = {
+	
+	/* ---------------------------------------- Public Methods ------------------------------------------------ */
+	'transform': function(json,transform,_options) {
+		
+		//create the default output
+		var out = {'events':[],'html':''};
+		
+		//default options (by default we don't allow events)
+		var options = {
+			'events':false
+		};
+		
+		//extend the options
+		options = json2html._extend(options,_options);
+
+		//Make sure we have a transform & json object
+		if( transform !== undefined || json !== undefined ) {
+
+			//Normalize strings to JSON objects if necessary
+			var obj = typeof json === 'string' ? JSON.parse(json) : json;
+			
+			//Transform the object (using the options)
+			out = json2html._transform(obj, transform, options);
+		}
+		
+		//determine if we need the events
+		// otherwise return just the html string
+		if(options.events) return(out);
+			else return( out.html );
+	},
+	
+	/* ---------------------------------------- Private Methods ------------------------------------------------ */
+	
+	//Extend options
+	'_extend':function(obj1,obj2){
+		var obj3 = {};
+		for (var attrname in obj1) { obj3[attrname] = obj1[attrname]; }
+		for (var attrname in obj2) { obj3[attrname] = obj2[attrname]; }
+		return obj3;
+	},
+	
+	//Append results
+	'_append':function(obj1,obj2) {
+		var out = {'html':'','event':[]};
+		if(typeof obj1 !== 'undefined' && typeof obj2 !== 'undefined') {
+			out.html = obj1.html + obj2.html;
+
+			out.events = obj1.events.concat(obj2.events);
+		}
+
+		return(out);
+	},
+
+	//isArray (fix for IE prior to 9)
+	'_isArray':function(obj) {
+		return Object.prototype.toString.call(obj) === '[object Array]';
+	},
+	
+	//Transform object
+	'_transform':function(json, transform, options) {
+		
+		var elements = {'events':[],'html':''};
+		
+		//Determine the type of this object
+		if(json2html._isArray(json)) {
+			
+			//Itterrate through the array and add it to the elements array
+			var len=json.length;
+			for(var j=0;j<len;++j) {	
+				//Apply the transform to this object and append it to the results
+				elements = json2html._append(elements,json2html._apply(json[j], transform, j, options));
+			}
+
+		} else if(typeof json === 'object') {
+
+			//Apply the transform to this object and append it to the results
+			elements = json2html._append(elements,json2html._apply(json, transform, undefined, options));
+		}
+
+		//Return the resulting elements
+		return(elements);		
+	},
+
+	//Apply the transform at the second level
+	'_apply':function(obj, transform, index, options) {
+
+		var element = {'events':[],'html':''};
+		
+		//Itterate through the transform and create html as needed
+		if(json2html._isArray(transform)) {
+			
+			var t_len = transform.length;
+			for(var t=0; t < t_len; ++t) {
+				//transform the object and append it to the output
+				element = json2html._append(element,json2html._apply(obj, transform[t], index, options));
+			}
+
+		} else if(typeof transform === 'object') {
+            
+            var _element = '<>';
+            
+            //Add legacy support for tag
+            if(transform[_element] === undefined) _element = 'tag';
+            
+			//Check to see if we have a valid element name
+			if( transform[_element] !== undefined ) {
+
+                //Get the element name (this can be tokenized)
+				var name = json2html._getValue(obj,transform,_element,index);
+                
+				//Create a new element
+				element.html += '<' + name;
+
+				//Create a new object for the children
+				var children = {'events':[],'html':''};
+				
+				//innerHTML
+				var html;
+
+				//Look into the properties of this transform
+				for (var key in transform) {
+
+					switch(key) {
+						
+						//DEPRECATED (use <> instead)
+						case 'tag':
+
+						//HTML element to render
+						case '<>':
+							//Do nothing as we have already created the element
+						break;
+						
+						//Encode as text
+						case 'text':
+							//Get the transform value associated with this key
+							var _transform = transform[key];
+							
+							//Determine what kind of object this is
+							// array => NOT SUPPORTED
+							// other => text
+							if(json2html._isArray(_transform)) {
+                                //NOT Supported
+							} else if(typeof _transform === 'function') {
+								
+								//Get the result from the function
+								var temp = _transform.call(obj, obj, index);
+								
+								//Don't allow arrays as return objects from functions
+    							if(!json2html._isArray(temp)) {
+
+    								//Determine what type of object was returned
+    								switch(typeof temp){
+                                    
+    									//Not supported for text
+    									case 'function':
+    									case 'undefined':
+    									case 'object':
+    									break; 
+    									
+    									//Append as text
+    									// string, number, boolean
+    									default:
+    										//Insure we encode as text first
+    										children.html += json2html.toText(temp);
+    									break;
+    								}
+    							}
+							} else {
+								
+								//Get the encoded text associated with this element
+								html = json2html.toText( json2html._getValue(obj,transform,key,index) );
+							}
+						break;
+
+						//DEPRECATED (use HTML instead)
+						case 'children':
+
+						//Encode as HTML
+						// accepts Array of children, functions, string, number, boolean
+						case 'html':
+
+							//Get the transform value associated with this key
+							// added as key could be children or html
+							var _transform = transform[key];
+
+							//Determine what kind of object this is
+							// array & function => children
+							// other => html
+							if(json2html._isArray(_transform)) {
+                                
+								//Apply the transform to the children
+								children = json2html._append(children,json2html._apply(obj, _transform, index, options));
+							} else if(typeof _transform === 'function') {
+								
+								//Get the result from the function
+								var temp = _transform.call(obj, obj, index);
+                                
+                                //Don't allow arrays as return objects from functions
+                                if(!json2html._isArray(temp)) {
+                                    
+    								//Determine what type of object was returned
+    								switch(typeof temp){
+    
+    									//Only returned by json2html.transform or $.json2html calls
+    									case 'object':
+    										//make sure this object is a valid json2html response object
+    										// we ignore all other objects (since we don't know how to represent them in html)
+    										if(temp.html !== undefined && temp.events !== undefined) children = json2html._append(children,temp);
+    									break;
+    									
+    									//Not supported
+    									case 'function':
+    									case 'undefined':
+    									break; 
+    
+    									//Append to html
+    									// string, number, boolean
+    									default:
+    										children.html += temp;
+    									break;
+    								}
+                                }
+							} else {
+								
+								//Get the HTML associated with this element
+								html = json2html._getValue(obj,transform,key,index);
+							}
+						break;
+
+						default:
+							//Add the property as a attribute if it's not a key one
+							var isEvent = false;
+							
+							//Check if the first two characters are 'on' then this is an event
+							if( key.length > 2 )
+								if(key.substring(0,2).toLowerCase() == 'on') {
+									
+									//Determine if we should add events
+									if(options.events) {
+
+										//if so then setup the event data
+										var data = {
+											'action':transform[key],
+											'obj':obj,
+											'data':options.eventData,
+											'index':index
+										};
+										
+										//create a new id for this event
+										var id = json2html._guid();
+
+										//append the new event to this elements events
+										element.events[element.events.length] = {'id':id,'type':key.substring(2),'data':data};
+
+										//Insert temporary event property (json2html-event-id) into the element
+										element.html += " json2html-event-id-"+key.substring(2)+"='" + id + "'";
+									}
+									//this is an event
+									isEvent = true;
+								}
+
+							//If this wasn't an event AND we actually have a value then add it as a property
+							if( !isEvent){
+								//Get the value
+								var val = json2html._getValue(obj, transform, key, index);
+								
+								//Make sure we have a value
+                                if(val !== undefined) {
+                                    var out;
+                                    
+                                    //Determine the output type of this value (wrap with quotes)
+                                    if(typeof val === 'string') out = '"' + val.replace(/"/g, '&quot;') + '"';
+                                    else out = val;
+                                    
+                                    //create the name value pair
+                                    element.html += ' ' + key + '=' + out;
+                                }
+							}
+						break;
+					}
+				}
+			
+				//close the opening element
+				element.html += '>';
+				
+				//add the innerHTML (if we have any)
+				if(html) element.html += html;
+
+				//add the children (if we have any)
+				element = json2html._append(element,children);
+
+				//add the closing element
+				element.html += '</' + name + '>';
+			}
+		}
+		
+		//Return the output object
+		return(element);
+	},
+
+	//Get a new GUID (used by events)
+	'_guid':function() {
+		var S4 = function() {
+		   return (((1+Math.random())*0x10000)|0).toString(16).substring(1);
+		};
+		return (S4()+S4()+"-"+S4()+S4()+"-"+S4()+S4());
+	},
+
+	//Get the html value of the object
+	'_getValue':function(obj, transform, key,index) {
+		
+		var out = '';
+		
+		var val = transform[key];
+		var type = typeof val;
+		
+		if (type === 'function') {
+			return(val.call(obj,obj,index));
+		} else if (type === 'string') {
+			var _tokenizer = new json2html._tokenizer([
+				/\$\{([^\}\{]+)\}/
+			],function( src, real, re ){
+				return real ? src.replace(re,function(all,name){
+					
+					//Split the string into it's seperate components
+					var components = name.split('.');
+
+					//Set the object we use to query for this name to be the original object
+					var useObj = obj;
+
+					//Output value
+					var outVal = '';
+					
+					//Parse the object components
+					var c_len = components.length;
+					for (var i=0;i<c_len;++i) {
+
+						if( components[i].length > 0 ) {
+
+							var newObj = useObj[components[i]];
+							useObj = newObj;
+							if(useObj === null || useObj === undefined) break;
+						}
+					}
+					
+					//As long as we have an object to use then set the out
+					if(useObj !== null && useObj !== undefined) outVal = useObj;
+
+					return(outVal);
+				}) : src;
+			});
+			
+			out = _tokenizer.parse(val).join('');
+		} else {
+			out = val;
+		}
+
+		return(out);
+	},
+
+	//Encode the html to text
+	'toText':function(html) {
+		return html
+			.replace(/&/g, '&amp;')
+			.replace(/</g, '&lt;')
+			.replace(/>/g, '&gt;')
+			.replace(/\"/g, '&quot;')
+			.replace(/\'/g, '&#39;')
+			.replace(/\//g, '&#x2F;');
+	},
+	
+	//Tokenizer
+	'_tokenizer':function( tokenizers, doBuild ){
+
+		if( !(this instanceof json2html._tokenizer ) )
+			return new json2html._tokenizer( tokenizers, doBuild );
+			
+		this.tokenizers = tokenizers.splice ? tokenizers : [tokenizers];
+		if( doBuild )
+			this.doBuild = doBuild;
+
+		this.parse = function( src ){
+			this.src = src;
+			this.ended = false;
+			this.tokens = [ ];
+			do {
+				this.next();
+			} while( !this.ended );
+			return this.tokens;
+		};
+		
+		this.build = function( src, real ){
+			if( src )
+				this.tokens.push(
+					!this.doBuild ? src :
+					this.doBuild(src,real,this.tkn)
+				);	
+		};
+
+		this.next = function(){
+			var self = this,
+				plain;
+				
+			self.findMin();
+			plain = self.src.slice(0, self.min);
+			
+			self.build( plain, false );
+				
+			self.src = self.src.slice(self.min).replace(self.tkn,function( all ){
+				self.build(all, true);
+				return '';
+			});
+			
+			if( !self.src )
+				self.ended = true;
+		};
+
+		this.findMin = function(){
+			var self = this, i=0, tkn, idx;
+			self.min = -1;
+			self.tkn = '';
+			
+			while(( tkn = self.tokenizers[i++]) !== undefined ){
+				idx = self.src[tkn.test?'search':'indexOf'](tkn);
+				if( idx != -1 && (self.min == -1 || idx < self.min )){
+					self.tkn = tkn;
+					self.min = idx;
+				}
+			}
+			if( self.min == -1 )
+				self.min = self.src.length;
+		};
+	}
+};
+
+
+
+
+const bitTypes = ["cloze", "cloze-instruction-grouped", "cloze-solution-grouped", "multiple-choice", "multiple-response", "multiple-choice-text", "cloze-and-multiple-choice-text", "essay", "interview", "interview-instruction-grouped", "match", "match-solution-grouped", "true-false", "sequence", "correction", "mark", "document-upload", "take-picture", "record", "preparation-note", "assignment", "article", "flashcard", "chat-conversation", "bot-interview", "self-assessment"];
+const bitTypesWithCardsSupport = ["interview", "interview-instruction-grouped", "match", "match-solution-grouped", "true-false", "sequence", "assignment", "article", "flashcard", "self-assessment"];
+const bitmarkFormats = ["text", "bitmark--", "bitmark+", "bitmark++"];
+const attachments = [
+	{type: "article", formats: bitmarkFormats, default:"text"},
+	{type: "image", formats: ["jpg", "gif", "png", "svg"], default:"basic"},
+	{type: "audio", formats: ["mp3"], default:"mp3"},
+	{type: "video", formats: ["mp4"], default:"mp4"}
+];
+const resources = ["image", "image-zoom", "audio", "audio-online", "video", "video-online", "article", "article-online", "document", "document-online", "app"];
+
+function parseBitmark(_bitmarkBook) {
+	
+	var bits = [];
+	var comments = [];
+	
+	// Replace bitmark comments with placeholders [|n]
+	
+	var index_ = 0;
+	
+	var regex = /\|\|([\s\S]*?)\|\|/gm;
+	const bitmark_book_no_comments = _bitmarkBook.replace(regex, function (_full, _first_match) {
+		comments.push(_first_match);
+		let rt_ = "[|" + index_ + "]";
+		index_++;
+		return rt_;
+	});
+	
+	// Find Bits
+	
+	regex = /^\[\.(?<type>(?:(?<bit_type>.*?)(?::(?<bit_format>.*?)|))(?:&(?:(?<resource_type>.*?)(?::(?<resource_format>.*?)|))|))\](?<content>[\s\S]*?)(?:(?:$(?![\r\n]))|(?=\.\.\.\.\.\.)|(?=^\[\..*?\])|(?=^\[=.*?\]))/mg;
+
+	let consumedComments_ = [];
+	let m_;
+	
+	while (m_ = regex.exec(bitmark_book_no_comments)) {
+		
+		let parsed_ = m_.groups;
+		let bit_ = {
+			warnings: [],
+			errors: [],
+			comments: [],
+			type: parsed_.bit_type,
+			format: parsed_.bit_format,
+			resource: {
+				type: parsed_.resource_type,
+				format: parsed_.resource_format
+			}
+		};
+
+		let content_ = parsed_.content;
+
+		// Remove commment placeholders and attach comments to their Bits
+
+		let comment_regex = /\[\|([0-9]*?)\]/gm;
+		content_ = content_.replace(comment_regex, function (_full, _commentIndex) {
+			let index_ = parseInt(_commentIndex);
+			bit_.comments.push(comments[index_]);
+			consumedComments_.push(index_);
+			return "";
+		});
+
+		bit_.temp = content_;
+
+		// Test for some typical user mistakes like unclosed Comments, ...
+
+		let c_ = (content_.match(/\|\|/g) || []).length
+		
+		if (c_ > 0) {
+			let m_ = c_ + " '||' found.";
+			bit_.warnings.push(m_)
+		}
+		
+		c_ = (content_.match(/TODO/g) || []).length
+		
+		if (c_ > 0) {
+			let m_ = c_ + " 'TODO' found.";
+			bit_.warnings.push(m_)
+		}
+		
+		trim_properties(bit_);
+		
+		if (parsed_.bit_format && parsed_.bit_format != "text" && parsed_.bit_format != "bitmark--" && parsed_.bit_format != "bitmark+" && parsed_.bit_format != "bitmark++") {
+			let m_ = "Unknown format **(" + parsed_.bit_format + ")** found!";
+			bit_.errors.push(m_);
+		}
+		if (parsed_.resource_format && parsed_.resource_format != "text" && parsed_.resource_format != "bitmark--" && parsed_.resource_format != "bitmark+" && parsed_.resource_format != "bitmark++") {
+			let m_ = "Unknown format **(" + parsed_.resource_format + ")** for resource found!";
+			bit_.errors.push(m_);
+		}
+		
+		if (!isValidBitTypeStr(parsed_.bit_type)) {
+			let m_ = "Unknown Bit type **(" + parsed_.bit_type + ")** found!";
+			bit_.errors.push(m_);
+		}
+
+		bits.push(bit_);
+		
+	}
+
+	//remove bit comments, onyl leaving global comments (outside of the scope of the bits)
+
+	for (let i_ = consumedComments_.length - 1; i_ >= 0; i_--) {
+		comments.splice(consumedComments_[i_], 1);
+	}
+	
+	index_ = bits.length;
+	
+	console.info(index_ + " Bit(s) found.");
+
+	// Find article resources
+	
+	index_ = 0;
+	var oc_ = 0;
+	
+	for (let bit_ of bits) {
+		
+		let [content_, article_or_preview_, article_, overrun_] = bit_.temp.split(/^\&\&\&$/gm) || [];
+		
+		if (content_) {
+			bit_.temp = content_.trim();
+		} else {
+			bit_.temp = "";
+		}
+		
+		bit_.resource.article = undefined;
+		bit_.resource.preview = undefined;
+		
+		if (article_or_preview_) {
+			
+			if (!bit_.resource.type) {
+				let m_ = "Found Bit with article resource, but missing resource type!";		
+				bit_.errors.push(m_);
+				continue;
+			}
+			
+			if ("article" != bit_.resource.type) {
+				let m_ = "Found Bit with article resource, but wrong resource type (" + bit_.resource.type + ")!";
+				bit_.errors.push(m_);
+				continue;
+			}
+			
+			if (article_) {
+				bit_.resource.article = article_.trim();
+				bit_.resource.preview = article_or_preview_.trim();
+				index_++;
+			} else {
+				bit_.resource.article = article_or_preview_.trim();
+				index_++;
+			}
+		}
+		
+		if (overrun_) {
+			oc_++;
+		}
+		
+	}
+	
+	
+	if (oc_ > 0) {
+		let m_ = oc_ + " article separator(s) ('&&&') in article resources found!";
+		bit_.errors.push(m_);
+	}
+	
+	
+	// Find hard breaks
+
+	regex = /^(?<content_line_tag>===$[\s\S]*===)/mg;
+		
+	for (let bit_ of bits) {
+		
+		let c_ = 0;
+		let bits = [];
+		let match;
+
+		if (bitSupportsCards(bit_)) {
+			while (match = regex.exec(bit_.temp)) {
+				bit_.tempLines = match.groups.content_line_tag.trim();
+				bit_.temp = (RegExp.leftContext + RegExp.rightContext).trim();
+				bits.push(match.groups);
+			}
+			
+			c_ = bits.length
+			
+			if (0 == c_) {
+				bit_.tempLines = undefined;
+			}
+			
+			if (1 == c_) {
+				//console.info("Multiline content found.");
+			} else if (c_ > 0) {
+				let m_ = "Fatal Error: More than 1 multi-line content in Bit found.";
+				bit_.errors.push(m_);
+			}
+		} else {
+			if (regex.test(bit_.temp)) {
+				let m_ = `${bit_.type} does not support cards. '===' are ignored.`
+				bit_.warnings.push(m_);
+			}
+		}
+		
+	}
+	
+	
+	
+	// Find Instruction [!...]
+	
+	findTag("instruction", /^\[!([\s\S]*?)]/gm);
+	
+	// Find Item [%...]
+	
+	findTag("item", /^\[%(.*?)]/gm);
+	
+	// Find Hint [?...]
+	
+	findTag("hint", /^\[\?([\s\S]*?)]/gm);
+	
+	// Find All Resource [&...]
+	
+	findAllResources();
+		
+	// Find Body and Cards
+	
+	regex_ = /^===$([\s\S]*?)(?====)/mg;
+	
+	for (let bit_ of bits) {
+
+		bit_.body = "";
+		bit_.cards = [];
+
+		if (bit_.temp) {
+			bit_.body = bit_.temp.trim();
+		}
+		
+		if (bit_.tempLines) {
+			
+			bit_.tempLines = bit_.tempLines.replace(regex_, function (_fullmatch, _firstmatch) {
+				let line_ = _firstmatch.trim();
+				let card_ = {
+					body: line_
+				};
+				bit_.cards.push(card_);
+				return "";
+			});
+			
+		}
+
+		checkForBitmark("body", bit_);
+		checkForBitmark("cards.body", bit_);
+	}	
+
+	// Clean Up
+	
+	for (let bit_ of bits) {
+		if('temp' in bit_) {
+			delete bit_.temp;
+		}
+		if('tempLines' in bit_) {
+			delete bit_.tempLines;
+		}		
+	}
+
+
+	// Enrich Bits
+
+	for (let bit_ of bits) {
+	
+
+		if (!bit_.type) continue;
+
+		switch (bit_.type) {
+
+			case "cloze":
+				parseCloze(bit_);
+				break; 
+			case "cloze-instruction-grouped":
+				parseCloze(bit_);
+				break; 
+			case "cloze-solution-grouped":
+				parseCloze(bit_);
+				break; 
+			case "cloze-and-multiple-choice-text":
+				parseCloze(bit_);
+				parseMultipleChoiceText(bit_);
+				break;
+			case "article":
+				parseArticle(bit_);
+				break;				
+			case "multiple-choice":
+				parseMultipleChoice(bit_);
+				break;
+			case "multiple-response":
+				parseMultipleResponse(bit_);
+				break;
+			case "multiple-choice-text":
+				parseMultipleChoiceText(bit_);
+				break;
+			case "essay":
+				break;
+			case "interview":
+				parseInterview(bit_);
+				break;
+			case "interview-instruction-grouped":
+				parseInterview(bit_);
+				break;
+			case "match":
+				parseMatch(bit_);
+				break;
+			case "match-solution-grouped":
+				parseMatch(bit_);
+				break;
+			case "true-false":
+				parseTrueFalse(bit_);
+				break;
+			case "sequence":
+				break;
+			case "correction":
+				break;
+			case "mark":
+				break;
+			case "document-upload":
+				break;
+			case "take-picture":
+				break;
+			case "record":
+				break;
+			case "preparation-note":
+			break;
+			case "assignment":
+				break;
+			case "flashcard":
+				break;
+			case "chat-conversation":
+				break;
+			case "bot-interview":
+				break;
+			case "self-assessment":
+				break;
+		}
+
+	}
+	
+	// Display Bits
+	
+	var data = comments;
+
+	var list_transforms = {
+		'item': {'<>': 'li', 'html': function(obj, index) { return bitmark_minimal2html(obj, "bitmark--") }},
+		'list': {'<>': 'ul', 'html': function() { return (json2html.transform(data, list_transforms.item)) }},
+	};
+	
+	var msg_transforms = {
+		'msg': {'<>': 'div', 'class': '${class}', 'html': function() { return (json2html.transform({}, list_transforms.list)) }},
+	};
+
+	if (data && data.length > 0) {
+		document.getElementById("comments").innerHTML = json2html.transform({class: "comments"}, msg_transforms.msg);
+	} else {
+		document.getElementById("comments").innerHTML = "";
+	}
+
+	
+	var bit_transforms = {"<>":"div","class":"bit","html":[
+		{"<>":"div","class":"item","text":"${item}"},
+		{"<>":"div","class":"instruction","html": _d => { return bitmark_minimal2html(_d.instruction, _d.format)}},
+		{"<>":"div","class":"audio-resource","html": _d => { return audioHtml(_d)}},
+		{"<>":"div","class":"image-resource","html": _d => { return imageHtml(_d)}},
+		{"<>":"div","class":"video-resource","html":""},
+		{"<>":"div","class":"grouped","html": _d => { return groupedHtml(_d)}},
+		{"<>":"div","class":"body","html": _d => { return innerHtml(_d)}},
+		{"<>":"div","class":"article","html": _d => { return articleAttachmentHtml(_d)}},
+		{"<>":"div","class":"external-resource","html":""},
+		{"<>":"div","class":"essay-textarea","style": _d => { return showEssayTextarea(_d)},"html": _d => { return essayTextareaHtml(_d)}},
+		{"<>":"div","class":"footer","style": _d => { return showFooter(_d)},"html":""}
+	]};
+
+	function imageHtml(_bit) {
+		if (_bit && _bit.resource && _bit.resource.image && _bit.resource.image['@1x']) {
+			return '<img src="' + _bit.resource.image['@1x'] + '" onerror="imgError(this);">';
+		}
+		return "";
+	}
+
+	function audioHtml(_bit) {
+		if (_bit && _bit.resource && _bit.resource.audio && _bit.resource.audio.src) {
+			return `<img src="images/volume-high@2x.png" onclick="function a(t) { if (!t.audio) {t.audio = new Audio('${_bit.resource.audio.src}')}; if (t.audio.paused) {t.audio.play()} else {t.audio.pause()};}; a(this);">`;
+		}
+		return "";
+	}
+
+	function groupedHtml(_bit) {
+
+		if (!_bit) return "";
+		if (!_bit.type) return "";
+
+		let format_ = "text";
+
+		if (_bit.format && (_bit.format == "bitmark--" || _bit.format == "bitmark+" || _bit.format == "bitmark++" )) {
+			format_ = "bitmark--";
+		}	
+
+		let groupedHtml_ = "";
+
+		let grouped_ = [];
+		let groupCount_ = {};
+
+		switch (_bit.type) {
+			case "interview-instruction-grouped":
+			for (let key_ in _bit.cards) {
+				let instruction_ = _bit.cards[key_].instruction.text;
+				instruction_ = bitmark_minimal2html(instruction_, format_);
+				grouped_.push(instruction_);
+			}
+			groupCount_ = countItems(removeEmpty(grouped_));
+			grouped_ = shuffle(unique(removeEmpty(grouped_)));
+			grouped_ = addCountToUniques(grouped_, groupCount_);
+			groupedHtml_ = grouped_.join(" • ");
+			break;
+
+			case "cloze-instruction-grouped":
+			for (let key_ in _bit.gaps) {
+				let instruction_ = _bit.gaps[key_].instruction;
+				instruction_ = bitmark_minimal2html(instruction_, format_);
+				grouped_.push(instruction_);
+			}
+			groupCount_ = countItems(removeEmpty(grouped_));
+			grouped_ = shuffle(unique(removeEmpty(grouped_)));
+			grouped_ = addCountToUniques(grouped_, groupCount_);
+			groupedHtml_ = grouped_.join(" • ");
+			break;
+
+			case "cloze-solution-grouped":
+			for (let key_ in _bit.gaps) {
+				let solutions_ = _bit.gaps[key_].solutions;
+				grouped_ = grouped_.concat(solutions_);
+			}
+			groupCount_ = countItems(removeEmpty(grouped_));
+			grouped_ = shuffle(unique(removeEmpty(grouped_)));
+			grouped_ = addCountToUniques(grouped_, groupCount_);
+			groupedHtml_ = grouped_.join(" • ");
+			break;
+
+			case "match-solution-grouped":
+			break;
+		}
+
+		return groupedHtml_;
+	}
+
+	function showFooter(_bit) {
+		if (_bit.type && _bit.type == "essay") {
+			return "display:none";
+		}
+		if (_bit.type && _bit.type == "true-false") {
+			return "display:block";
+		}
+		if (_bit.cards && _bit.cards.length > 0) {
+			return "display:block";
+		}
+		if (_bit.resources["image"] && _bit.resources["image"].length > 0) {
+			return "display:none";
+		}
+		return "display:block";
+	}
+
+	function showEssayTextarea(_bit) {
+		if (_bit.type && _bit.type == "essay") {
+			return "display:block";
+		}
+		return "display:none";
+	}
+
+	function essayTextareaHtml(_bit) {
+		return `<textarea rows='8'></textarea>`;
+	}
+
+	var bit_html_ = "";
+	
+	globalbits = bits;
+
+	for (let [index_ ,bit_] of bits.entries()) {
+
+		bit_.index = index_;
+		
+		if (bit_.resource.type == "image" && bit_.resource && bit_.resource.image) {
+			show_url = bit_.resource.image["@1x"];
+		} else {
+			show_url = "";
+		}
+
+		bit_html_ += json2html.transform(bit_, bit_transforms);
+
+		data = bit_.warnings;
+		if (data && data.length > 0) {
+			bit_html_ += json2html.transform({class: "warnings"}, msg_transforms.msg);
+		}
+		data = bit_.errors;
+		if (data && data.length > 0) {
+			bit_html_ += json2html.transform({class: "errors"}, msg_transforms.msg);
+		}
+
+		data = bit_.comments;
+		if (data && data.length > 0) {
+			bit_html_ += json2html.transform({class: "comments"}, msg_transforms.msg);
+		}
+
+	}
+
+	document.getElementById("bits").innerHTML = bit_html_;
+
+	console.log(bits);
+
+	return bits;
+	
+	
+
+
+
+
+	// Private functions
+
+	function findAllResources() {
+		
+		let regex_ = /^\[\&(.*?)]/gm;
+		
+		let oc_ = 0;
+		
+		for (let bit_ of bits) {
+
+			if (bit_.resource.type && !resources.includes(bit_.resource.type)) {
+				let m_ = "Bit has unknown resource type **" + bit_.resource.type + "**";
+				bit_.errors.push(m_);
+			}
+			
+			bit_.resources = {};
+			for (let n_ of resources) {
+				bit_.resources[n_] = [];
+			}
+
+			index_ = 0;
+			bit_.temp = bit_.temp.replace(regex_, function (_fullmatch, _firstmatch) {
+				if (_firstmatch) {
+					
+					let article_ = _firstmatch.trim();
+					
+					let regex_ = /(.*):(.*):(.*):(.*)/mg;
+
+					article_.replace(regex_, function (_fullmatch, type_, format_, protocol_, url_) {
+
+						if (resources.includes(type_)) {
+							
+							if (format_ == "") format_ = undefined;
+
+							bit_.resources[type_].push({type: type_, format: format_, protocol: protocol_, url: protocol_ + ":" + url_});
+
+						} else {
+							let m_ = "Unknown resource found: **" + type_ + "**";
+							bit_.errors.push(m_);
+						}
+					});
+
+					let t_ = bit_.resource.type;
+					
+					if (t_ && resources.includes(t_)) {
+
+						let rr_ = bit_.resources[t_];
+
+						if (!bit_.resource) bit_.resource = {};
+
+						if (rr_.length > 0) {
+							let tr_ = rr_[0];
+
+							let r_ = {
+								type: t_,
+								private: {}
+							};
+	
+							r_[t_] = {};
+	
+							switch (t_) {
+
+								case "image":
+								r_[t_]["@1x"] = tr_.url;
+								r_[t_]["format"] = tr_.format;
+								r_[t_]["size"] = undefined;
+								r_[t_]["showInIndex"] = true;
+								r_[t_]["alt"] = "";
+								break;
+
+								case "audio":
+								r_.audio = {
+									format: tr_.format,
+									src: tr_.url,
+								}
+								break;
+
+							}
+
+
+							bit_.resource = r_;
+	
+						}
+					} 
+				};
+				index_++;
+				return "";
+			});
+
+
+			if (bit_.resource.type && resources.includes(bit_.resource.type)) {
+				if (bit_.resource.type ){
+					if (!(bit_.resource && bit_.resource[bit_.resource.type])) {
+						let m_ = "No **" + bit_.resource.type + "** resource in Bit found!";
+						bit_.errors.push(m_);
+					}
+				}					
+			}
+
+			oc_ += index_;
+			
+		}
+		
+	}	
+	
+	function findTag(_tag, _regex) {
+		
+		let oc_ = 0;
+		
+		for (let bit_ of bits) {
+			
+			index_ = 0;
+			bit_[_tag] = undefined;
+			
+			bit_.temp = bit_.temp.replace(_regex, function (_fullmatch, _firstmatch) {
+				
+				if (0 == index_ && _firstmatch) {
+					bit_[_tag] = _firstmatch.trim();
+					index_++;
+					
+					checkForBitmark(_tag, bit_);
+					
+				} else {
+					let m_ = "Excess **" + _tag + "** found! Ignored: **" + _firstmatch.trim() + "**";
+					bit_.errors.push(m_);
+				}
+				return "";
+			});
+			
+			oc_ += index_;
+			
+		}
+		
+	}
+		
+	function checkForBitmark(_tag, _bit) {
+
+		let ts_ = _tag.split(".");
+
+		if (ts_.length > 2) {
+			console.warn("checkForBitmark can't handle tag: " + _tag);
+			return;
+		}
+
+		if (!_bit.format || "text" == _bit.format) {
+
+			let s_ = "";
+
+			if (Array.isArray(_bit[ts_[0]])) {
+				if (ts_.length > 1) {
+					for (let o_ of _bit[ts_[0]]) {
+						if (o_[ts_[1]]) {
+							s_ += o_[ts_[1]] + "\n";
+						}
+					}
+				} else {
+					s_ = _bit[_tag].join("\n");
+				}
+			} else {
+				s_ = _bit[_tag];
+			}
+
+			if (!s_) s_= "";
+			
+			let bc_ = (s_.match(/\*\*/g) || []).length
+			let uc_ = (s_.match(/__/g) || []).length
+
+			let tip_ = "";
+			if (isValidBitType(_bit)) {
+				tip_ = "\nTipp: Try [" + _bit.type + "**:bitmark--**" + "]";
+			}
+			
+			if (bc_ > 0 || uc_ > 0) {
+				if (!_bit.format) {
+					let m_ = "This Bit might contain bitmark.\n" + bc_ + "x '\\*\\*' (important) and " + uc_ + "x '\\_\\_' (emphasized) found, but the format is not defined. So, it defaults to plain text." + tip_;
+					_bit.warnings.push(m_);
+				} else if ("text" == _bit.format) {
+					let m_ = "This Bit might contain bitmark.\n" + bc_ + "x '\\*\\*' (important) and " + uc_ + "x '\\_\\_' (emphasized) found, but the format is plain text." + tip_;
+					_bit.warnings.push(m_);
+				}
+			}
+		}
+		
+	}
+	
+}
+	
+	
+// Private Functions
+
+function bitSupportsCards(_bit) {
+	if (!_bit.type) return true;
+
+	return bitTypesWithCardsSupport.includes(_bit.type);
+}
+
+function isValidBitType(_bit) {
+	if (!_bit.type) return false;
+	
+	return isValidBitTypeStr(_bit.type);
+}
+
+function isValidBitTypeStr(_str) {
+	if (!_str) return false;
+	
+	return bitTypes.includes(_str);
+}
+
+
+function trim_properties(_bit) {
+	for(var p_ in _bit){
+		if (_bit[p_] && (typeof _bit[p_] === "string" || _bit[p_] instanceof String)) {
+			_bit[p_] = _bit[p_].trim();
+		}
+	}
+}
+
+
+function syntaxHighlight(json) {
+	json = json.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+	return json.replace(/("(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\"])*"(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?)/g, function (match) {
+		var cls = 'number';
+		if (/^"/.test(match)) {
+			if (/:$/.test(match)) {
+				cls = 'key';
+			} else {
+				cls = 'string';
+			}
+		} else if (/true|false/.test(match)) {
+			cls = 'boolean';
+		} else if (/null/.test(match)) {
+			cls = 'null';
+		}
+		return '<span class="' + cls + '">' + match + '</span>';
+	});
+}
+
+
+function imgError (_img) {
+	_img.onerror = "";
+	_img.src = "images/broken.png";
+	return true;
+}
+
+
+/*
+
+{
+	"bitmark": "This sentence is a [_cloze][_gap text][!noun] with [_2][?1 or 2] gaps including an instruction for the first and a hint for the second gap.",
+	"bit": {
+		"type": "cloze",
+		"format": "text",
+		"item": "",
+		"instruction": "",
+		"hint": "",
+		"body": "This sentence is a {0} with {1} gaps including an instruction for the first and a hint for the second gap.",
+		"gaps": {
+			"{0}": {
+				"solutions":["cloze", "gap text"],
+				"instruction": "noun",
+				"example": true
+			},
+			"{1}": {
+				"solutions":["2"],
+				"hint":"1 or 2"
+			}
+		}
+	},
+	...
+}
+
+*/
+
+// parseCloze
+
+function parseCloze(_bit) {
+
+	_bit.gaps = {};
+
+	if (!_bit) return;
+	if (!_bit.body) return;
+
+	content_ = _bit.body;
+
+	let regex_ = /(\[_.*?\](?:\[_.*?\])*)((?:\[![\s\S]*?\]|\[\?[\s\S]*?\]|\[@[\s\S]*?\])*)/gm;
+	let count_ = 0;
+
+	content_ = content_.replace(regex_, function (_full, _gaps, _chain) {
+		let key_ = `{_${ count_ }_}`;
+
+		let example_ = getFirst(_chain, /\[@example:([\s\S]*?)\]/);
+		let isExample_ = /\[@example\]/.test(_chain) || /\[@example:[\s\S]*?\]/.test(_chain);
+
+		// Cloze does not allow line breaks in examples (unlike other Bits)
+
+		if (/\n/m.test(example_)) {
+			let m_ = "A cloze gap **@example** cannot contain line breaks!";
+			_bit.errors.push(m_);
+			example_ = "";
+			isExample_ = false;
+		}
+
+		_bit.gaps[key_] = {
+			solutions: getSolutions(_gaps),
+			instruction: getFirst(_chain, /\[!([\s\S]*?)\]/m),
+			hint: getFirst(_chain, /\[\?([\s\S]*?)\]/m),
+			example: example_,
+			isExample: isExample_
+		};
+
+		count_++;
+		return key_;
+	});
+
+	_bit.body = content_;
+}
+
+// parseMultipleChoice
+
+function parseMultipleChoiceText(_bit) {
+
+	_bit.placeholders = {};
+
+	if (!_bit) return;
+	if (!_bit.body) return;
+
+	content_ = _bit.body;
+
+	let regex_ = /(\[[\+\-'].*?\](?:\[[\+\-'].*?\])*)((?:\[![\s\S]*?\]|\[\?[\s\S]*?\]|\[@[\s\S]*?\])*)/gm;
+	let count_ = 0;
+
+	content_ = content_.replace(regex_, function (_full, _choices, _chain) {
+		let key_ = `{+${ count_ }+}`;
+
+		let isExample_ = /\[@example\]/.test(_chain);
+
+		let fix_ = getPreAndPostfix(_choices);
+
+		let choice_ = {
+			options: getOptions(_choices),
+			instruction: getFirst(_chain, /\[!([\s\S]*?)\]/m),
+			hint: getFirst(_chain, /\[\?([\s\S]*?)\]/m),
+			isExample: isExample_,
+			prefix: fix_.prefix,
+			postfix: fix_.postfix
+		};
+
+		let s_ = key_;
+
+		if (choice_.prefix) {
+			s_ = choice_.prefix + s_;
+		}
+
+		if (choice_.postfix) {
+			s_ += choice_.postfix;
+		}
+
+		_bit.placeholders[key_] = choice_;
+
+		count_++;
+		return s_;
+	});
+
+	_bit.body = content_;
+}
+
+function parseTrueFalse(_bit) {
+
+	if (!_bit) return;
+	if (!_bit.body) return;
+
+	content_ = _bit.body;
+
+	let regex_ = /\[([\+\-])(.*?)\](?:\[@(.*?)\])*/gm;
+	let count_ = 0;
+	let lines_ = [];
+
+	content_ = content_.replace(regex_, function (_full, _solution, _text, _atText) {
+
+		let isExample_ = ("example" == _atText);
+
+		let correct_ = false;
+		if ("+" == _solution) correct_ = true;
+		
+		_text = _text.trim();
+
+		let line_ = {text: _text, correct: correct_, isExample: isExample_};
+		
+		lines_.push(line_);
+
+		count_++;
+		return "";
+	});
+
+	_bit.lines = lines_;
+	_bit.body = content_.trim();
+}
+
+function parseMultipleResponse(_bit) {
+
+	if (!_bit) return;
+	if (!_bit.body) return;
+
+	content_ = _bit.body;
+
+	let regex_ = /\[([\+\-])(.*?)\](?:\[@(.*?)\])*/gm;
+	let count_ = 0;
+	let lines_ = [];
+
+	content_ = content_.replace(regex_, function (_full, _solution, _text, _atText) {
+
+		let isExample_ = ("example" == _atText);
+
+		let correct_ = false;
+		if ("+" == _solution) correct_ = true;
+		
+		_text = _text.trim();
+
+		let line_ = {text: _text, correct: correct_, isExample: isExample_};
+		
+		lines_.push(line_);
+
+		count_++;
+		return "";
+	});
+
+	_bit.lines = lines_;
+	_bit.body = content_.trim();
+}
+
+function parseMultipleChoice(_bit) {
+
+	if (!_bit) return;
+	if (!_bit.body) return;
+
+	content_ = _bit.body;
+
+	let regex_ = /\[([\+\-])(.*?)\](?:\[@(.*?)\])*/gm;
+	let count_, countCorrect_ = 0;
+	let lines_ = [];
+
+	content_ = content_.replace(regex_, function (_full, _solution, _text, _atText) {
+
+		let isExample_ = ("example" == _atText);
+
+		let correct_ = false;
+		if ("+" == _solution) {
+			correct_ = true;
+			countCorrect_ ++;
+		}
+		
+		_text = _text.trim();
+
+		let line_ = {text: _text, correct: correct_, isExample: isExample_};
+		
+		lines_.push(line_);
+
+		count_++;
+		return "";
+	});
+
+	if (1 != countCorrect_) {
+		let m_ = `multiple-choice Bits must contain exactly one correct answer. This bit has ${countCorrect_} answers marked as correct.`;
+		_bit.errors.push(m_);
+		_bit.instruction = "";
+	}
+
+	_bit.lines = lines_;
+	_bit.body = content_.trim();
+}
+
+function parseArticle(_bit) {
+	if (!_bit) return;
+
+	if (_bit.instruction) {
+		let m_ = "article Bits do not contain an **instruction [!...].** You might be looking for an assignment Bit.";
+		_bit.warnings.push(m_);
+		_bit.instruction = "";
+	}
+
+	if (_bit.hint) {
+		let m_ = "article Bits do not contain a **hint [?...].** You might be looking for an **assignment** Bit.";
+		_bit.warnings.push(m_);
+		_bit.hint = "";
+	}
+
+}
+
+
+function parseInterview(_bit) {
+
+	if (!_bit) return;
+	if (!_bit.cards) return;
+	if (_bit.cards.length == 0) return;
+
+	for (let card_ of _bit.cards) {
+	
+		// Find [@example:...], [@longAnswer], [@shortAnswer], instruction [!...] and hint [?...]
+
+		let parsed_ = parse(card_.body);
+		
+		card_.body  = parsed_.remainder;
+
+		// [@example:...] ([@example] is not recognized as it makes no sense for an interview)
+
+		card_.example = parsed_.tags.example.text;
+		card_.isExample = parsed_.tags.example.isExample;
+
+		if (parsed_.tags.example.count > 1) {
+			let m_ = "More than one @example inside === block found."
+			_bit.errors.push(m_);
+		}
+
+		if (parsed_.tags.example.emptyCount > 0) {
+			let m_ = "Empty @example tag inside === block found."
+			_bit.errors.push(m_);
+		}
+
+		// @longAnswer
+
+		card_.isLongAnswer = false;
+
+		if (parsed_.tags.longAnswer) {
+			card_.longAnswer = true;
+
+			if (parsed_.tags.longAnswer.count > 1) {
+				let m_ = "More than one @longAnswer inside === block found."
+				_bit.errors.push(m_);
+			}
+		}
+
+		// @shortAnswer
+
+		card_.isShortAnswer = false;		
+		
+		if (parsed_.tags.shortAnswer) {
+			card_.shortAnswer = true;
+
+			if (parsed_.tags.shortAnswer.count > 1) {
+				let m_ = "More than one @shortAnswer inside === block found."
+				_bit.errors.push(m_);
+			}
+
+			if (card_.isLongAnswer) {
+				let m_ = "@shortAnswer and @logAnser inside same === block found."
+				_bit.errors.push(m_);
+			}
+		}
+						
+		// instruction [!...]
+
+		card_.instruction = parsed_.tags.instruction;
+
+		if (parsed_.tags.instruction.count > 1) {
+			let m_ = "More than one instrucion [!...] inside === block found."
+			_bit.errors.push(m_);
+		}
+
+		if (parsed_.tags.instruction.emptyCount > 0) {
+			let m_ = "Empty instrucion [!...] inside === block found."
+			_bit.errors.push(m_);
+		}
+
+		// hint [?...]
+
+		card_.hint = parsed_.tags.hint;
+
+		if (parsed_.tags.hint.count > 1) {
+			let m_ = "More than one hint [?...] inside === block found."
+			_bit.errors.push(m_);
+		}
+
+		if (parsed_.tags.hint.emptyCount > 0) {
+			let m_ = "Empty hint [?...] inside === block found."
+			_bit.errors.push(m_);
+		}
+
+	}
+
+	
+}
+
+
+function parseMatch(_bit) {
+
+	if (!_bit) return;
+	if (!_bit.cards) return;
+	if (_bit.cards.length == 0) return;
+
+	let count_ = 0;
+	let groupedSolutions_ = [];
+
+	for (let card_ of _bit.cards) {
+	
+		// Find [@example:...], [@longAnswer], instruction [!...] and hint [?...]
+
+		if (!card_.body) card_.body = "";
+
+		let parsedFullCard_ = parse(card_.body);
+
+		//let deck_  = parsedFullCard_.remainder.split("==");
+		let sides_  = card_.body.split("==");
+
+		let front_, back_ = "";
+		let parsedFront_, parsedBack_ = {};
+
+		if (sides_.length != 2) {
+			let m_ = `${sides_.length - 1} "==" separators found. Exactly 1 is required.`;
+			_bit.errors.push(m_);
+		}
+
+		if (sides_.length >= 1) {
+			parsedFront_ = parse(sides_[0]);
+			front_ = parsedFront_.remainder;
+		} else {
+			parsedFront_ = parse(undefined);
+		}
+
+		if (sides_.length >= 2) {
+			parsedBack_ = parse(sides_[1]);
+			back_ = parsedBack_.remainder;
+		} else {
+			parsedBack_ = parse(undefined);
+		}
+
+		delete card_.body;
+		card_.front = front_.trim();
+		card_.back = [];
+		
+		let solutions_ = back_.split("--");
+		for (let solution_ of  solutions_) {
+			solution_ = solution_.trim();
+			if (solution_) {
+				card_.back.push(solution_);
+				groupedSolutions_.push(solution_);
+			}
+		}
+
+		// title [#...]
+
+		card_.frontTitle = "";
+		card_.backTitle = "";
+		card_.hasTitle = false;
+
+		if (parsedFront_.tags.title && parsedFront_.tags.title.count > 0) {
+			card_.frontTitle = parsedFront_.tags.title.text;
+			card_.hasTitle = true;
+		}
+
+		if (parsedBack_.tags.title && parsedBack_.tags.title.count > 0) {
+			card_.backTitle = parsedBack_.tags.title.text;
+			card_.hasTitle = true;
+		}
+
+		// [@example:...]
+
+		card_.example = parsedFullCard_.tags.example.text;
+		card_.isExample = parsedFullCard_.tags.example.isExample;
+
+		if (parsedFullCard_.tags.example.count > 1) {
+			let m_ = "More than one @example inside === block found."
+			_bit.errors.push(m_);
+		}
+
+		// @longAnswer
+
+		card_.isLongAnswer = false;
+
+		if (parsedFullCard_.tags.longAnswer) {
+			card_.longAnswer = true;
+
+			if (parsedFullCard_.tags.longAnswer.count > 1) {
+				let m_ = "More than one @longAnswer inside === block found."
+				_bit.errors.push(m_);
+			}
+		}
+		
+		// instruction [!...]
+
+		card_.instruction = parsedFullCard_.tags.instruction;
+
+		if (parsedFullCard_.tags.instruction.count > 1) {
+			let m_ = "More than one instrucion [!...] inside === block found."
+			_bit.errors.push(m_);
+		}
+
+		if (parsedFullCard_.tags.instruction.emptyCount > 0) {
+			let m_ = "Empty instrucion [!...] inside === block found."
+			_bit.errors.push(m_);
+		}
+
+		// hint [?...]
+
+		card_.hint = parsedFullCard_.tags.hint;
+
+		if (parsedFullCard_.tags.hint.count > 1) {
+			let m_ = "More than one hint [?...] inside === block found."
+			_bit.errors.push(m_);
+		}
+
+		if (parsedFullCard_.tags.hint.emptyCount > 0) {
+			let m_ = "Empty hint [?...] inside === block found."
+			_bit.errors.push(m_);
+		}
+
+		count_++;
+
+	}
+
+	groupedSolutions_ = shuffle(unique(removeEmpty(groupedSolutions_)));
+	_bit.groupedSolutions = groupedSolutions_;
+}
+
+function parse(_content) {
+
+	let result_ = {
+		remainder: "",
+		tags: {
+			title: {
+				text: "",
+				count: 0,
+				emptyCount: 0,
+			},
+			instruction: {
+				text: "",
+				count: 0,
+				emptyCount: 0,
+			},
+			hint: {
+				text: "",
+				count: 0,
+				emptyCount: 0,
+			},
+			example: {
+				text: "",
+				count: 0,
+				emptyCount: 0,
+				isExample: false,
+			},
+		},
+	};
+
+	if (!_content) return result_;
+
+	// [!instruction] [?hint] [@...]
+
+	let regex_ = /\[#(.*?)\]|\[!([\s\S]*?)\]|\[\?([\s\S]*?)\]|\[@(.+?[^:\]]*):?([\s\S]*?)\]/gm;
+
+	_content = _content.replace(regex_, function (_full, _title, _instruction, _hint, _atTag, _atText) {
+
+		if (_atTag) {
+			switch (_atTag) {
+
+				case "example":
+				if (result_.tags.example.count == 0) {			// take first
+					result_.tags.example.text = _atText;
+					result_.tags.example.isExample = true;
+				}
+				result_.tags.example.count++;
+				if (!_atText) result_.tags.example.emptyCount++;
+				break;
+
+				case "instruction":
+				_instruction = _atText;
+				break;
+
+				case "title":
+				_title = _atText;
+				break;
+
+				case "hint":
+				_hint = _atText;
+				break;
+
+				default:
+				if (!result_.tags[_atTag]) {
+					result_.tags[_atTag] = {
+						text: _atText,
+						count: 0,
+						emptyCount: 0,
+					};
+				}
+				result_.tags[_atTag].count++;
+				if (!_atText) result_.tags[_atTag].emptyCount++;
+			}
+
+		}
+
+		if (undefined != _title) {
+			if (result_.tags.title.count == 0) {			// take first
+				result_.tags.title.text = _title;
+			}
+			result_.tags.title.count++;
+			if ("" == _title) result_.tags.title.emptyCount++;
+		}
+
+		if (undefined != _instruction) {
+			if (result_.tags.instruction.count == 0) {			// take first
+				result_.tags.instruction.text = _instruction;
+			}
+			result_.tags.instruction.count++;
+			if ("" == _instruction) result_.tags.instruction.emptyCount++;
+		}
+
+		if (undefined != _hint) {
+			if (result_.tags.hint.count == 0) {			// take first
+				result_.tags.hint.text = _hint;
+			}
+			result_.tags.hint.count++;
+			if ("" == _hint) result_.tags.hint.emptyCount++;
+		}
+
+		return "";
+	
+	});
+
+	result_.remainder = _content;
+
+	return result_;
+}
+
+
+function isEmpty(_array) {
+
+	if (!_array || _array.length <= 0) return true;
+	
+	for (let lines_ of _array) {
+		if (lines_ != "") return false;
+	}
+
+	return true;
+
+}
+
+function getSolutions(_gaps) {
+
+	let regex_ = /\[_(.*?)\]/g;
+
+	let solutions_ = [];
+	
+	let count_ = 0;
+	_gaps.replace(regex_, function (_full, _solution) {
+		_solution = _solution.trim();
+		solutions_.push(_solution);
+		count_++;
+		return "";
+	});
+
+	return solutions_;
+}
+
+function getOptions(_choices) {
+
+	let regex_ = /\[([\+\-])(.*?)\]/g;
+
+	let options_ = [];
+	
+	let count_ = 0;
+	_choices.replace(regex_, function (_full, _solution, _text) {
+
+		let correct_ = false;
+		if ("+" == _solution) correct_ = true;
+		
+		_text = _text.trim();
+
+		let option_ = {text: _text, correct: correct_};
+		
+		options_.push(option_);
+		count_++;
+		return "";
+	});
+
+	return options_;
+}
+
+function getPreAndPostfix(_choices) {
+
+	let regex_ = /^\['(.*?)\]/g;
+
+	let prefix_ = "";
+	
+	_choices = _choices.replace(regex_, function (_full, _prefix) {
+		prefix_ = _prefix;
+		return "";
+	});
+
+	egex_ = /\['(.*?)\]$/g;
+
+	let postfix_ = "";
+	
+	_choices.replace(regex_, function (_full, _postfix) {
+		postfix_ = _postfix;
+		return "";
+	});
+
+	let fix_ = {
+		prefix: prefix_,
+		postfix: postfix_
+	};
+
+	return fix_;
+}
+
+function getFirst(_chain, _regex) {
+
+	// Regex must not contain the flag /g (only /m, if needed)
+
+	let tags_ = _chain.match(_regex);
+
+	let tag_ = "";
+
+	if (tags_ && tags_.length > 0) tag_ = tags_[1];
+	
+	return tag_;
+}
+
+function isValidBitmarkFormat(_str) {
+	if (!_str) return false;
+	
+	return bitmarkFormats.includes(_str);
+}
+
+// bitmark2html (probably going to its own file)
+
+function bitmark_minimal2html(_bitmark, _format) {
+
+	if (!_bitmark) return "";
+
+	if (!(typeof _bitmark === "string" || _bitmark instanceof String)) {
+		console.warn("Not a string. Cannot convert to html!");
+		console.warn(_bitmark);
+		return "";
+	}
+
+	if (!_format || _format == "text") return escapeHtml(_bitmark);
+
+	if (_format != "bitmark--" && _format != "bitmark+" && _format != "bitmark++") return escapeHtml(_bitmark);
+	
+	let regex_ =  /(\\\*)|(\\_)|(\\\\)|(?:\*\*)([\s\S]*?\**)(?:\*\*)|(?:__)([\s\S]*?_*)(?:__)/gm;
+
+	let html_ = _bitmark.replace(regex_, function (_fullmatch, _esc_asterisk, _esc_underscore, _esc_backslash, _important_match, _em_match) {
+		let h_ = "";
+		if (_important_match && _important_match != "") {
+			h_ = "<strong>" + _important_match + "</strong>";
+		} else if (_em_match && _em_match != "") {
+			h_ = "<em>" + _em_match + "</em>";
+		} else if (_esc_asterisk && _esc_asterisk != "") {
+			h_ = "*";
+		} else if (_esc_underscore && _esc_underscore != "") {
+			h_ = "_";
+		} else if (_esc_backslash && _esc_backslash != "") {
+			h_ = "\\";
+		}
+		
+		return h_;
+	});
+
+	return html_;
+}
+
+
+function bitmark_minimal2text(_bitmark) {
+
+	if (!_bitmark) return "";
+
+	if (!(typeof _bitmark === "string" || _bitmark instanceof String)) {
+		console.warn("Not a string. Cannot convert to html!");
+		console.warn(_bitmark);
+		return "";
+	}
+
+	let regex_ =  /(\\\*)|(\\_)|(\\\\)|(?:\*\*)([\s\S]*?\**)(?:\*\*)|(?:__)([\s\S]*?_*)(?:__)/gm;
+
+	let text_ = _bitmark.replace(regex_, function (_fullmatch, _esc_asterisk, _esc_underscore, _esc_backslash, _important_match, _em_match) {
+		let h_ = "";
+		if (_important_match && _important_match != "") {
+			h_ = _important_match;
+		} else if (_em_match && _em_match != "") {
+			h_ = _em_match;
+		} else if (_esc_asterisk && _esc_asterisk != "") {
+			h_ = "*";
+		} else if (_esc_underscore && _esc_underscore != "") {
+			h_ = "_";
+		} else if (_esc_backslash && _esc_backslash != "") {
+			h_ = "\\";
+		}
+		
+		return h_;
+	});
+
+	return text_;
+}
+
+function escapeHtml(_unsafe) {
+
+	if (!_unsafe) return "";
+
+	if (!(typeof _unsafe === "string" || _unsafe instanceof String)) {
+		console.warn("Not a string to escape!");
+		console.warn(_unsafe);
+		return "";
+	}
+
+	return _unsafe
+		 .replace(/&/g, "&amp;")
+		 .replace(/</g, "&lt;")
+		 .replace(/>/g, "&gt;")
+		 .replace(/"/g, "&quot;")
+		 .replace(/'/g, "&#039;");
+ }
+
+
+ function innerHtml(_bit) {
+
+	if (!_bit.type) return "";
+
+	let html_ = "";
+
+	switch (_bit.type) {
+
+		case "cloze":
+			html_ = clozeInnerHtml(_bit);
+			break;
+		case "cloze-instruction-grouped":
+			html_ = clozeInnerHtml(_bit);
+			break; 
+		case "cloze-solution-grouped":
+			html_ = clozeInnerHtml(_bit);
+			break; 
+		case "cloze-and-multiple-choice-text":
+			html_ = clozeInnerHtml(_bit);
+			html_ = multipleChoiceTextInnerHtml(_bit, html_);
+			break; 
+		case "article":
+			html_ = genericInnerHtml(_bit);
+			break;
+		case "multiple-choice":
+			html_ = multipleChoiceInnerHtml(_bit);
+			break;
+		case "multiple-response":
+			html_ = multipleResponseInnerHtml(_bit);
+			break;
+		case "multiple-choice-text":
+			html_ = multipleChoiceTextInnerHtml(_bit);
+			break;
+		case "essay":
+			html_ = genericInnerHtml(_bit);
+			break;
+		case "interview":
+			html_ = interviewInnerHtml(_bit);
+			break;
+		case "interview-instruction-grouped":
+			html_ = interviewInstructionGroupedInnerHtml(_bit);
+			break;
+		case "match":
+			html_ = matchInnerHtml(_bit);
+			break;
+		case "match-solution-grouped":
+			html_ = matchGroupedInnerHtml(_bit);
+			break;
+		case "true-false":
+			html_ = trueFalseInnerHtml(_bit);
+			break;
+		case "sequence":
+			
+		case "correction":
+			
+		case "mark":
+			
+		case "document-upload":
+			
+		case "take-picture":
+			
+		case "record":
+			
+		case "preparation-note":
+			
+		case "assignment":
+			
+		case "flashcard":
+			
+		case "chat-conversation":
+			
+		case "bot-interview":
+			
+		case "self-assessment":
+
+		default: 
+			html_ = genericInnerHtml(_bit);
+	}
+
+	return html_;
+
+ }
+
+ function genericInnerHtml(_bit) {
+
+	let format_ = "text";
+
+	if (_bit.format && (_bit.format == "bitmark--" || _bit.format == "bitmark+" || _bit.format == "bitmark++" )) {
+		format_ = "bitmark--";
+	}
+
+	let content_ = "";
+
+	if (_bit.body) {
+		content_ += _bit.body;
+	}
+
+	if (_bit.cards && _bit.cards.length > 0) {
+		let c_ = "";
+		for (let card_ of _bit.cards) {
+			if (card_.body) {
+				c_ += card_.body + "\n";
+			}
+		}
+		content_ += "\n" + c_;
+	}
+
+	let html_ = bitmark_minimal2html(content_, format_);
+
+	return html_;
+ }
+
+function clozeInnerHtml(_bit) {
+
+	if (!_bit.body) return "";
+	
+	let format_ = "text";
+
+	if (_bit.format && (_bit.format == "bitmark--" || _bit.format == "bitmark+" || _bit.format == "bitmark++" )) {
+		format_ = "bitmark--";
+	}
+
+	let groupedSolutions_ = [];
+	let groupedInstructions_ = [];
+
+	let html_ = bitmark_minimal2html(_bit.body, format_);
+
+	for (let key_ in _bit.gaps) {
+
+		let instruction_ = _bit.gaps[key_].instruction;
+		let example_ = undefined;
+		let value_ = "";
+
+		let isExample_ = _bit.gaps[key_].isExample;
+		let solutions_ = shuffle(unique(removeEmpty(_bit.gaps[key_].solutions)));
+
+		groupedSolutions_ = groupedSolutions_.concat(solutions_);
+		groupedInstructions_.push(instruction_);
+
+		if (_bit.type == "cloze-instruction-grouped") {
+			instruction_ = "";
+		}
+
+		if (isExample_) {
+			instruction_ = "";
+
+			example_ = _bit.gaps[key_].example;
+			if (!example_) {
+				if (solutions_ && solutions_.length > 0) {
+					value_ = solutions_[0];
+				}
+			}
+			
+		}
+
+		if (!example_) example_ = "";
+
+		let examplePlainText_ = example_;
+
+		if (_bit.format && (_bit.format == "bitmark--" || _bit.format == "bitmark+" || _bit.format == "bitmark++")) {
+			examplePlainText_ = bitmark_minimal2text(example_);
+		}
+		// Evaluate size of the input field
+
+		let size_ = 8;		// Default for gaps without solutions
+		let extraGap_ = 2;
+
+		if (solutions_) {
+			let hs_ = 0;
+			for (let solution_ of solutions_) {
+				if (solution_.length > hs_) hs_ = solution_.length;
+			}
+			if (0 != hs_) {
+				size_= hs_;
+			}
+		}
+
+		let allSolutions_ = "";
+		if (solutions_) {
+			allSolutions_ = solutions_.join("},{");
+		}
+
+		if (instruction_.length > size_) size_ = instruction_.length;
+		if (examplePlainText_.length > size_) size_ = examplePlainText_.length;
+
+		size_ += extraGap_;
+
+		let exampleHtml_ = bitmark_minimal2html(example_, _bit.format);
+
+		let style_ = "";
+
+		if (isExample_ && example_) {
+			style_ = "pointer-events: none;";
+			if (solutions_.includes(examplePlainText_)) {
+				style_ += "background-color: #B8E986;";	//green
+			} else {
+				style_ += "background-color: #FFB2BB;";	//red
+			}
+		} else {
+			style_ = "pointer-events: auto;";
+			if (solutions_.includes(value_)) {
+				style_ += "background-color: #B8E986;"; //green
+			} else {
+				style_ += "background-color: #C8E7FE;"; //blue
+			}
+		}
+
+		let inputHtml_ = `<div class="input-container"><input class="cloze-input" type="text" value="${value_}" placeholder="${instruction_}" size="${size_}" data-solutions="${allSolutions_}" style="${style_}" oninput="checkClozeInput(this)"><div class="input-example-overlay">${exampleHtml_}</div></div>`;
+
+		let hintHtml_ = "";
+
+		let hint_ = _bit.gaps[key_].hint;
+
+		if (hint_) {
+			let hintText_ = bitmark_minimal2html(hint_, format_);
+			hintHtml_ = `<div class="hint-container popup" onclick="popupHint(this)"><img src="images/hint.svg" width="20pt" height="20pt"><span class="popuptext">${hintText_}</span></div>`;
+		}
+
+		let gapHtml_ = inputHtml_ + hintHtml_;
+
+		html_ = html_.split(key_).join(gapHtml_);
+	
+	}
+
+	html_ = `<div class="cloze-container">${html_}</div>`
+
+	return html_;
+}
+
+function multipleChoiceTextInnerHtml(_bit, _chainedHtmlBody) {
+
+	if (!_bit.body) return "";
+	
+	let format_ = "text";
+
+	if (_bit.format && (_bit.format == "bitmark--" || _bit.format == "bitmark+" || _bit.format == "bitmark++" )) {
+		format_ = "bitmark--";
+	}
+
+	let html_ = "";
+	if (!_chainedHtmlBody) {
+		html_ = bitmark_minimal2html(_bit.body, format_);
+	} else {
+		html_ = _chainedHtmlBody;
+	}
+
+	for (let key_ in _bit.placeholders) {
+
+		let instruction_ = _bit.placeholders[key_].instruction;
+
+		let isExample_ = _bit.placeholders[key_].isExample;
+		let options_ = shuffle(unique(removeEmpty(_bit.placeholders[key_].options)));
+
+		let optionsHtml_ = "";
+		let hasSelection_ = false;
+
+		for (let option_ of options_) {
+			let selected_ = "";
+			if (isExample_ && option_.correct) {
+				selected_ = "selected";
+				hasSelection_ = true;
+			}
+			optionsHtml_ += `<option ${selected_}>${option_.text}</option>`;
+		}
+
+		if (!hasSelection_) {
+			optionsHtml_ += `<option selected disabled></option>`;
+		}
+
+		let inputHtml_ = `<div class="select-container"><select>${optionsHtml_}</select></div>`;
+
+		let hintHtml_ = "";
+
+		let hint_ = _bit.placeholders[key_].hint;
+
+		if (hint_) {
+			let hintText_ = bitmark_minimal2html(hint_, format_);
+			hintHtml_ = `<div class="hint-container popup" onclick="popupHint(this)"><img src="images/hint.svg" width="20pt" height="20pt"><span class="popuptext">${hintText_}</span></div>`;
+		}
+
+		let chainHtml_ = inputHtml_ + hintHtml_;
+
+		html_ = html_.split(key_).join(chainHtml_);
+	
+	}
+
+	html_ = `<div class="multiplechoicetext-container">${html_}</div>`
+
+	return html_;
+}
+
+function popupHint(_this) {
+	_this.classList.toggle("show");
+}
+
+function interviewInnerHtml(_bit) {
+
+	if (!_bit.type || _bit.type != "interview") return "";
+
+	let format_ = "text";
+
+	if (_bit.format && (_bit.format == "bitmark--" || _bit.format == "bitmark+" || _bit.format == "bitmark++" )) {
+		format_ = "bitmark--";
+	}
+	
+	let html_ = bitmark_minimal2html(_bit.body, format_);
+
+	for (let card_ of _bit.cards) {
+
+		let bodyHtml_ = bitmark_minimal2html(card_.body, format_);
+		let textHtml_ = `<div class="interview-body">${bodyHtml_}</div>`;
+		html_ += textHtml_;
+
+		let instruction_ = "";
+		if (card_.instruction && card_.instruction.count > 0) instruction_ = card_.instruction.text;
+
+		let isExample_ = card_.isExample;
+		let example_ = card_.example;
+
+		let exampleHtml_ = "";
+		if (isExample_ && card_.example) {
+			exampleHtml_ = bitmark_minimal2html(card_.example, format_);
+		}
+
+		let style_ = "";
+
+		if (isExample_ && example_) {
+			instruction_ = "";
+			style_ = "pointer-events: none;";
+			style_ += "background-color: #B8E986;";	//green
+		} else {
+			style_ = "pointer-events: auto;";
+			style_ += "background-color: #C8E7FE;"; //blue
+		}
+
+		let rows_ = "5";
+		if (card_.longAnswer) {
+			rows_ = "12";
+		}
+		if (card_.shortAnswer) {
+			rows_ = "2";
+		}
+
+		let textareaHtml_ = `<div class="interview-container"><textarea rows="${rows_}" class="interview-textarea" style="${style_}" placeholder="${instruction_}" ></textarea><div class="interview-example-overlay">${exampleHtml_}</div></div>`;
+		html_ += textareaHtml_;
+	}
+
+	return html_;
+}
+
+function interviewInstructionGroupedInnerHtml(_bit) {
+
+	if (!_bit.type || _bit.type != "interview-instruction-grouped") return "";
+
+	let format_ = "text";
+
+	if (_bit.format && (_bit.format == "bitmark--" || _bit.format == "bitmark+" || _bit.format == "bitmark++" )) {
+		format_ = "bitmark--";
+	}
+	
+	let html_ = bitmark_minimal2html(_bit.body, format_);
+
+	for (let card_ of _bit.cards) {
+
+		let bodyHtml_ = bitmark_minimal2html(card_.body, format_);
+		let textHtml_ = `<div class="interview-body">${bodyHtml_}</div>`;
+		html_ += textHtml_;
+
+		let instruction_ = "";
+		if (card_.instruction && card_.instruction.count > 0) instruction_ = card_.instruction.text;
+
+		let isExample_ = card_.isExample;
+		let example_ = card_.example;
+
+		let exampleHtml_ = "";
+		if (isExample_ && card_.example) {
+			exampleHtml_ = bitmark_minimal2html(card_.example, format_);
+		}
+
+		let style_ = "";
+
+		if (isExample_ && example_) {
+			instruction_ = "";
+			style_ = "pointer-events: none;";
+			style_ += "background-color: #B8E986;";	//green
+		} else {
+			style_ = "pointer-events: auto;";
+			style_ += "background-color: #C8E7FE;"; //blue
+		}
+
+		let rows_ = "5";
+		if (card_.longAnswer) {
+			rows_ = "12";
+		}
+		if (card_.shortAnswer) {
+			rows_ = "2";
+		}
+
+		let textareaHtml_ = `<div class="interview-container"><textarea rows="${rows_}" class="interview-textarea" style="${style_}" ></textarea><div class="interview-example-overlay">${exampleHtml_}</div></div>`;
+		html_ += textareaHtml_;
+	}
+
+	return html_;
+}
+
+function matchInnerHtml(_bit) {
+
+	if (!_bit.type) return "";
+
+	let format_ = "text";
+
+	if (_bit.format && (_bit.format == "bitmark--" || _bit.format == "bitmark+" || _bit.format == "bitmark++" )) {
+		format_ = "bitmark--";
+	}
+	
+	let html_ = bitmark_minimal2html(_bit.body, format_);
+	html_ += '<div class="match-body">';
+
+	let groupedSolutions_ = [];
+	let groupedInstructions_ = [];
+
+	let hasLongAnswers_ = false;
+	for (let card_ of _bit.cards) {
+		if (card_.longAnswer) {
+			hasLongAnswers_ = true;
+			break;
+		}
+	}
+
+	for (let card_ of _bit.cards) {
+
+		let frontHtml_ = bitmark_minimal2html(card_.front, format_);
+		frontHtml_ = `<div class="match-front">${frontHtml_}</div>`;
+
+		let instruction_ = "";
+		
+		if (card_.instruction && card_.instruction.count > 0) instruction_ = card_.instruction.text;
+
+		let solutions_ = shuffle(unique(removeEmpty(card_.back)));
+
+		groupedSolutions_ = groupedSolutions_.concat(solutions_);
+		groupedInstructions_.push(instruction_);
+
+		if (_bit.type == "match-instruction-grouped") {
+			instruction_ = "";
+		}
+
+		let isExample_ = card_.isExample;
+		let example_ = card_.example;
+		let value_ = "";
+
+		if (isExample_) {
+			instruction_ = "";
+
+			if (!example_) {
+				if (solutions_ && solutions_.length > 0) {
+					value_ = solutions_[0];
+				}
+			}
+			
+		}
+
+		if (!example_) example_ = "";
+
+		let examplePlainText_ = example_.trim();
+
+		if (_bit.format && (_bit.format == "bitmark--" || _bit.format == "bitmark+" || _bit.format == "bitmark++")) {
+			examplePlainText_ = bitmark_minimal2text(example_);
+		}
+		// Evaluate size of the input field
+
+		let allSolutions_ = "";
+		if (solutions_) {
+			allSolutions_ = solutions_.join("},{");
+		}
+
+		let exampleHtml_ = bitmark_minimal2html(example_, _bit.format);
+
+		let backStyle_ = "";
+		let overlayStyle_ = "";
+
+		if (isExample_ && example_) {
+			backStyle_ += "pointer-events: none;position: absolute;";
+			overlayStyle_ += "position: relative;";
+			if (solutions_.includes(examplePlainText_)) {
+				backStyle_ += "background-color: #B8E986;";	//green
+				overlayStyle_ += "background-color: #B8E986;";	//green
+			} else {
+				backStyle_ += "background-color: #FFB2BB;";	//red
+				overlayStyle_ += "background-color: #FFB2BB;";	//red
+			}
+		} else {
+			backStyle_ = "pointer-events: auto;";
+			if (solutions_.includes(value_.trim())) {
+				backStyle_ += "background-color: #B8E986;"; //green
+			} else {
+				backStyle_ += "background-color: #C8E7FE;"; //blue
+			}
+		}
+
+		let rows_ = "1";
+		if (card_.longAnswer) {
+			rows_ = "3";
+		}
+
+		let backHtml_ = `<div class="match-container"><textarea rows="${rows_}" class="match-textarea" style="${backStyle_}" placeholder="${instruction_}" oninput="checkMatchInput(this)" data-solutions="${allSolutions_}">${value_}</textarea><div class="match-example-overlay" style="${overlayStyle_}">${exampleHtml_}</div></div>`;
+
+		if (card_.hasTitle) {
+			frontHtml_ = `<div class="match-title">${card_.frontTitle}</div>`;
+			backHtml_ = `<div class="match-title">${card_.backTitle}</div>`;
+		}
+
+		let longAnswerStyle = "";
+		if (hasLongAnswers_) {
+			longAnswerStyle = "min-width: 300pt;";
+		}
+	
+		let containerHtml_ = `<div class="match-flex-container"><div style="flex-grow: 1;${longAnswerStyle}">${frontHtml_}</div><div style="flex-grow: 1;${longAnswerStyle}">${backHtml_}</div></div>`;
+
+		html_ += containerHtml_;
+	}
+
+	html_ += '</div>'
+
+	return html_;
+}
+
+function matchGroupedInnerHtml(_bit) {
+
+	if (!_bit.type) return "";
+
+	let format_ = "text";
+
+	if (_bit.format && (_bit.format == "bitmark--" || _bit.format == "bitmark+" || _bit.format == "bitmark++" )) {
+		format_ = "bitmark--";
+	}
+	
+	let html_ = bitmark_minimal2html(_bit.body, format_);
+	html_ += '<div class="match-body">';
+
+	let groupedSolutions_ = [];
+	let groupedInstructions_ = [];
+
+	let hasLongAnswers_ = false;
+	for (let card_ of _bit.cards) {
+		if (card_.longAnswer) {
+			hasLongAnswers_ = true;
+			break;
+		}
+	}
+
+
+	for (let card_ of _bit.cards) {
+
+		let frontHtml_ = bitmark_minimal2html(card_.front, format_);
+		frontHtml_ = `<div class="match-grouped-front">${frontHtml_}</div>`;
+
+		let instruction_ = "";
+		
+		if (card_.instruction && card_.instruction.count > 0) instruction_ = card_.instruction.text;
+
+		let isExample_ = card_.isExample;
+
+		let selectHtml_ = "";
+
+		for (let back_ of card_.back) {
+
+			selectHtml_ += "<select>";
+
+			let optionsHtml_ = "";
+			let hasSelection_ = false;
+
+			for (let solution_ of _bit.groupedSolutions) {
+				let selected_ = "";
+				if (isExample_ && card_.back.includes(solution_)) {
+					selected_ = "selected";
+					hasSelection_ = true;
+				}
+				optionsHtml_ += `<option ${selected_}>${solution_}</option>`;
+			}
+
+			if (!hasSelection_) {
+				optionsHtml_ += `<option selected disabled></option>`;
+			}
+			
+			selectHtml_ += optionsHtml_;
+			selectHtml_ += "</select>";
+
+		}
+
+		let backHtml_ = `<div class="match-grouped-back">${selectHtml_}</div>`;
+
+		if (card_.hasTitle) {
+			frontHtml_ = `<div class="match-grouped-front title">${card_.frontTitle}</div>`;
+			backHtml_ = `<div class="match-grouped-back title">${card_.backTitle}</div>`;
+		}
+
+		let containerHtml_ = `<div class="match-grouped-container">${frontHtml_}${backHtml_}</div>`;
+
+		html_ += containerHtml_;
+	}
+
+	html_ += '</div>'
+
+	return html_;
+}
+
+
+function trueFalseInnerHtml(_bit) {
+
+	if (!_bit.type) return "";
+
+	let format_ = "text";
+
+	if (_bit.format && (_bit.format == "bitmark--" || _bit.format == "bitmark+" || _bit.format == "bitmark++" )) {
+		format_ = "bitmark--";
+	}
+	
+	let html_ = bitmark_minimal2html(_bit.body, format_);
+	html_ += '<div class="true-false-body">';
+	html_ += '<div class="div-table"><div class="div-table-body">';
+	html_ += '<div class="div-table-row"><div class="div-table-cell"></div><div class="div-table-cell"><strong>true&nbsp;</strong></div><div class="div-table-cell"><strong>false</strong></div></div>';
+
+	let count_ = 0;
+
+	for (let line_ of _bit.lines) {
+
+		let textHtml_ = bitmark_minimal2html(line_.text, format_);
+	
+		let isExample_ = line_.isExample;
+
+		let radioGroupName_ = Math.random().toString(36).substring(7);
+		
+		let trueChecked_, falseChecked_ = "";
+
+		if (isExample_) {
+			if (line_.correct) {
+				trueChecked_ = "checked";
+			} else {
+				falseChecked_ = "checked";
+			}
+		}
+
+		html_ += `<div class="div-table-row"><div class="div-table-cell">${textHtml_}</div><div class="div-table-cell"><input type="radio" name="${radioGroupName_}" ${trueChecked_}></div><div class="div-table-cell"><input type="radio" name="${radioGroupName_}" ${falseChecked_}></div></div>`;
+
+	}
+
+	html_ += '</div></div></div>'
+
+	return html_;
+}
+
+
+function multipleResponseInnerHtml(_bit) {
+
+	if (!_bit.type) return "";
+
+	let format_ = "text";
+
+	if (_bit.format && (_bit.format == "bitmark--" || _bit.format == "bitmark+" || _bit.format == "bitmark++" )) {
+		format_ = "bitmark--";
+	}
+	
+	let html_ = bitmark_minimal2html(_bit.body, format_);
+	html_ += '<div class="generic-body">';
+	html_ += '<div class="div-table"><div class="div-table-body">';
+	
+	let count_ = 0;
+
+	for (let line_ of _bit.lines) {
+
+		let textHtml_ = bitmark_minimal2html(line_.text, format_);
+	
+		let isExample_ = line_.isExample;
+
+		let radioGroupName_ = Math.random().toString(36).substring(7);
+		
+		let checked_ = "";
+
+		if (isExample_) {
+			if (line_.correct) {
+				checked_ = "checked";
+			}
+		}
+
+		html_ += `<div class="div-table-row"><div class="div-left-table-cell"><input type="checkbox" name="${radioGroupName_}" ${checked_}></div><div class="div-table-cell">${textHtml_}</div></div>`;
+
+	}
+
+	html_ += '</div></div></div>'
+
+	return html_;
+}
+
+function multipleChoiceInnerHtml(_bit) {
+
+	if (!_bit.type) return "";
+
+	let format_ = "text";
+
+	if (_bit.format && (_bit.format == "bitmark--" || _bit.format == "bitmark+" || _bit.format == "bitmark++" )) {
+		format_ = "bitmark--";
+	}
+	
+	let html_ = bitmark_minimal2html(_bit.body, format_);
+	html_ += '<div class="generic-body">';
+	html_ += '<div class="div-table"><div class="div-table-body">';
+	
+	let count_ = 0;
+	let radioGroupName_ = Math.random().toString(36).substring(7);
+
+	for (let line_ of _bit.lines) {
+
+		let textHtml_ = bitmark_minimal2html(line_.text, format_);
+	
+		let isExample_ = line_.isExample;
+
+		let checked_ = "";
+
+		if (isExample_) {
+			if (line_.correct) {
+				checked_ = "checked";
+			}
+		}
+
+		html_ += `<div class="div-table-row"><div class="div-left-table-cell"><input type="radio" name="${radioGroupName_}" ${checked_}></div><div class="div-table-cell">${textHtml_}</div></div>`;
+
+	}
+
+	html_ += '</div></div></div>'
+
+	return html_;
+}
+
+function articleAttachmentHtml(_bit) {
+
+	if (!_bit.resource || !_bit.resource.type || _bit.resource.type != "article" ) return "";
+	if (!_bit.resource.article) return "";
+
+	let format_ = "text";
+
+	if (_bit.resource.format && (_bit.resource.format == "bitmark--" || _bit.resource.format == "bitmark+" || _bit.resource.format == "bitmark++" )) {
+		format_ = "bitmark--";
+	}
+	
+	let html_ = bitmark_minimal2html(_bit.resource.article, format_);
+
+	return html_;
+}
+
+
+function checkClozeInput(_this) {
+	let solutions_ = _this.dataset["solutions"].split("},{");
+
+	let solution_ = _this.value.trim();
+
+	if (solutions_.includes(solution_)) {
+		_this.style.backgroundColor = "#B8E986";
+	} else {
+		_this.style.backgroundColor = "#C8E7FE";
+	}
+}
+
+function checkMatchInput(_this) {
+	let solutions_ = _this.dataset["solutions"].split("},{");
+
+	let solution_ = _this.value.trim();
+
+	if (solutions_.includes(solution_)) {
+		_this.style.backgroundColor = "#B8E986";
+	} else {
+		_this.style.backgroundColor = "#C8E7FE";
+	}
+}
+
+function removeEmpty(_array) {
+
+	if (!_array) return [];
+
+	for (let i_ = _array.length - 1; i_ >= 0; i_--) {
+		if ("" == _array[i_]) {
+			_array.splice(i_, 1);
+		}
+	}
+	return _array;
+}
+
+function countItems(_array) {
+
+	var o_ = {};
+
+	if (!_array) return o_;
+
+	for (let i_ = _array.length - 1; i_ >= 0; i_--) {
+		var k_ = _array[i_];
+		if ("" != k_) {
+			if (!o_[k_]) {
+				o_[k_] = 1;
+			} else {
+				o_[k_] += 1;
+			}
+		}
+	}
+	return o_;
+}
+
+function addCountToUniques(_array, _counts) {
+
+	if (!_array) return [];
+	if (!_counts) return _array;
+
+	for (let i_ = _array.length - 1; i_ >= 0; i_--) {
+		var k_ = _array[i_];
+		if ("" != k_) {
+			if (_counts[k_]) {
+				let c_ = _counts[k_];
+				if (c_ > 1) {
+					_array[i_] += " (" + c_ + ")";
+				}
+			}
+		}
+	}
+	return _array;
+}
+
+function unique(_array) {
+
+	if (!_array) return [];
+
+	let result_ = Array.from(new Set(_array));
+	return result_    
+}
+
+function shuffle(_array) {
+
+	if (!_array) return [];
+
+	var currentIndex = _array.length, temporaryValue, randomIndex;
+  
+	// While there remain elements to shuffle...
+	while (0 !== currentIndex) {
+
+		// Pick a remaining element...
+		randomIndex = Math.floor(Math.random() * currentIndex);
+		currentIndex -= 1;
+  
+		// And swap it with the current element.
+		temporaryValue = _array[currentIndex];
+		_array[currentIndex] = _array[randomIndex];
+		_array[randomIndex] = temporaryValue;
+	}
+  
+	return _array;
+}
+
+  </script>
+
+<script>
+
+  window.angularComponent = {};
+
+  function showBooks(bookName){
+    var bookPath = 'assets/' + bookName;
+		window.angularComponent.globalLoadBook(bookPath);
+	}
+	
+</script>
+
+</head>
+
+<body>
+  
+	<my-app></my-app>
+	<div class="flex-container">
+		<div class="left-side">
+      <input type="text" value="text.txt" id="book-name" name="book-name" size="20">
+      <button type="button" onclick="showBooks(document.getElementById('book-name').value);">Show Book</button>
+		</div>
+		<div class="right-side">
+			<div>
+				<div id="comments" class="comments"></div>
+				<div id="bits"></div>
+			</div>
+		</div>
+	</div>
+
+  <div id="app"></div>	
+	
+</body>

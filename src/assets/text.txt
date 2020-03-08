@@ -1,0 +1,444 @@
+||Quizzes described in bitmark||
+
+[.multiple-choice]
+[!What color is milk?]
+[+whiteee]
+[-reeeed]
+[-blue]
+
+[.essay]
+[%A1d]
+[!Sind Sie ein Fußballfan? Wenn ja, beschreiben Sie Ihre Aktivitäten. Wenn nein, warum nicht?]
+
+
+[.cloze-instruction-grouped:bitmark--]
+[%A1e]
+[!Ergänzen Sie in dem folgenden Text die Verben in der richtigen Form. Arbeiten Sie zu zweit.]
+**König Fußball**
+
+Der Fußball [_erfreut][@example][!erfreuen] sich nicht nur in Deutschland besonderer Beliebtheit, er [_steht][!stehen] auch in vielen anderen Ländern in der Rangliste der beliebtesten Sportarten ganz oben. Doch was [_macht][!machen] den Fußball eigentlich so beliebt? Erklärungen dafür [_gibt][!geben] es viele. Fußball ist ein Spiel für alle, das überall [_gespielt][!spielen]werden kann, in jedem Land. Man [_braucht][!brauchen] zum Spielen keine übermäßige Intelligenz und auch kein Geld. Es [_reichen][!reichen] eine freie Fläche und ein Ball, ersatzweise eine Dose. Ein weiterer Grund für die herausragende Stellung des Fußballs ist das Gemeinschaftsgefühl. Fußball kann man nicht alleine spielen und nicht alleine sehen. Viele Fans[_identifizieren][!identifizieren] sich mit einem Fußballverein und ihrer Nationalmannschaft. Emotionen wie Freude, Ärger und Trauer werden [_geteilt][!teilen]. Bei großen Turnieren ist der Fußball in der Lage, sowohl die nationale als auch die internationale Solidarität zu [_fördern][!fördern], denn kaum ist die eigene Mannschaft aus dem Rennen, [_drückt][!drücken] man einer anderen Mannschaft, vielleicht aus einem benachbarten Land, die Daumen. Der Wettkampf auf dem Rasen [_bringt][!hervorbringen] außerdem Idole [_hervor][!hervorbringen], denen junge Fußballspieler und Fußballspielerinnen [_nacheifern][!nacheifern] wollen. Berühmte Fußballer [_gelten][!gelten] heute als Vorbilder und Nationalhelden.
+
+
+[.match:bitmark--]
+[%A2a]
+[!Wie heißen die passenden Nomen?]
+===
+[#Adjektiv]
+==
+[#Nomen]
+===
+talentiert
+==
+das Talent[@example]
+===
+ausdauernd 
+==
+die Ausdauer
+===
+fleißig
+==
+der Fleiß
+===
+kämpferisch
+==
+der Kampf
+===
+diszipliniert
+==
+die Disziplin
+===
+ehrgeizig
+==
+der Ehrgeiz
+===
+feige
+==
+die Feigheit
+===
+nachgiebig
+==
+die Nachgiebigkeit
+===
+großzügig
+==
+die Großzügigkeit
+===
+fair
+==
+die Fairness
+===
+selbstsüchtig
+==
+die Selbstsucht
+===
+freundlich
+==
+die Freundlichkeit
+===
+wortgewandt
+==
+die Wortgewandtheit
+===
+intelligent
+==
+die Intelligenz
+===
+wagemutig
+==
+der Wagemut
+===
+leichtsinnig
+==
+der Leichtsinn
+===
+zielstrebig
+==
+die Zielstrebigkeit
+===
+eitel
+==
+die Eitelkeit
+===
+ehrlich
+==
+die Ehrlichkeit
+===
+hinterhältig
+==
+die Hinterhältigkeit
+====
+
+
+[.interview:bitmark--&audio]
+[%A4]
+[!Sie hören jetzt einen Text zum Thema __Einkommen von Spitzensportlern__. Hören Sie den Text zweimal und ergänzen Sie die Informationen zu den angegebenen Punkten.]
+[&audio::http://docs.bitbook.education/bit-books/schubert_erkundungen_c1/web-resources/audio/05_erkundungen_c1.mp3]
+===
+1. zwei Leben der Sportler
+===
+2. durchschnittliches monatliches Bruttoeinkommen von Spitzensportlern
+===
+3. Zeit für Berufstätigkeit
+===
+4. zweitwichtigste Einnahmequelle
+===
+5. dritte Einnahmequelle
+===
+6. Höhe des Einkommens ist abhängig von
+===
+7. 1,44 Millionen US-Dollar Preisgeld
+===
+8. Olympiasieger verdienen
+===
+[====A5 Festigen Sie den Wortschatz des Hörtextes.]
+[=====a)]
+
+
+[.match-solution-grouped]
+[%A5a]
+[!Was passt? Ordnen Sie das richtige Verb zu.]
+===
+1. jemanden um ein Autogramm
+==
+c) anflehen
+===
+2. ein Leben im Rampenlicht
+==
+e) führen
+===
+3. den Lebensunterhalt
+==
+b) verdienen
+===
+4. sich 32 Stunden in der Woche dem Sport
+==
+a) widmen
+===
+5. mit Preisgeldern einen Teil des Einkommens
+==
+f) bestreiten
+===
+6. ein Olympiasieg kann sich
+==
+d) auszahlen
+===
+||TBD: Löschen der Nummerierung (a), (b), (c) etc.? Die Nummerierung macht wohl keinen Sinn, denn die Antworten im Pulldown werden gemischt||
+
+
+
+[.cloze-instruction-grouped]
+[%A5b]
+[!Ergänzen Sie in dem Text die fehlenden Nomen in der richtigen Form. Arbeiten Sie zu zweit.]
+Viele Spitzensportler müssen für ihren [_Lebensunterhalt][!Lebensunterhalt][@example] hart arbeiten. In den Monaten zwischen den [_Wettkämpfen][!Wettkämpfe] sieht ihr Leben oft wenig glamourös aus. Im Schnitt kommen Spitzensportler auf ein [_Bruttoeinkommen][!Bruttoeinkommen] von 1 919 Euro im Monat. Nach [_Abzug][!Abzug] von Steuern und Ausgaben für ihren Sport bleiben ihnen durchschnittlich 626 Euro zum [_Leben][!Leben].
+40 Prozent ihrer [_Einnahmen][!Einnahmen] verdienen die Athleten mit einer beruflichen Tätigkeit oder einem [_Nebenjob][!Nebenjob]. [_Unterstützung][!Unterstützung] von Eltern, Verwandten oder Bekannten gaben die Sportler als zweitwichtigste Quelle an. Sponsoren- und [_Werbeverträge][!Werbeverträge] folgen auf Platz drei. Mit Preis- und [_Startgeldern][!Startgelder] können die Sportler nur knapp zehn Prozent ihres Einkommens bestreiten.
+Wie viel am Monatsende auf dem [_Konto][!Konto] landet, hängt stark von der Sportart ab. Segler kommen auf ein monatliches Bruttoeinkommen von 4 561 Euro, Bogenschützen nur auf 447 Euro. Auch die Höhe der Preisgelder schwankt erheblich. Ein [_Sieg][!Sieg] beim US Masters im Golf bringt 1,44 Millionen US-Dollar, dem
+[_Gewinner][!Gewinner] der Vierschanzentournee im Skispringen bleiben rund 18 300 Euro. [_Erfolge][!Erfolg] bei Wettbewerben zahlt sich aber unabhängig von der Sportart aus: [_Olympiasieger][!Olympiasieger]verdienen durchschnittlich im Monat 5 000 Euro brutto mehr als [_Athleten][!Athleten], die bislang „nur“ den Titel Deutscher Meister tragen.
+||TBD: "Arbeiten Sie zu zweit."||
+
+
+
+[.match:bitmark--&article:bitmark++]
+[%A8b]
+[!Suchen Sie aus dem Text die Wörter, zu denen die Erklärung passt.]
+===
+ein Verb: nicht die Wahrheit sagen
+==
+lügen[!l . . . .]
+===
+__ein Verb__: etwas mit Appetit und Vergnügen essen
+==
+verspeisen[!. . . sp . . . . ]
+===
+__ein Verb__: ein Hindernis meistern oder bewältigen
+==
+überwinden[!ü . . . . . . . . . ]
+===
+__ein Nomen__: eine Person, die darauf achtet, dass sich die Spieler an die Spielregeln halten
+==
+Schiedsrichter[!Sch . . . . . . . . . . . ]
+===
+__ein Verb__: bestimmte Substanzen zu sich nehmen, um seine Müdigkeit zu überwinden oder sich in Erregung zu versetzen
+==
+aufputschen[!au . . . . . . . . . . .]
+===
+__ein Nomen__: eine Person, die sich nicht an die Normen der Gruppe oder der Gesellschaft anpasst
+==
+Außenseiter[!. . . . . . ei . . .]
+===
+__ein Verb__: jemandem Geld oder ein Geschenk geben, um dadurch (gegen die offiziellen Bestimmungen) einen Vorteil zu erhalten
+==
+bestechen[!B . . . . . . . .]
+===
+__ein Verb__: jemanden bewusst täuschen
+==
+betrügen[!. . . . ü . . . ]
+===
+&&&
+...
+||TODO: obiger .article integrieren, auch damit nicht der ganze Artikel copy&paste eingesetzt werden muss; nur eine Quelle||
+||TODO: mit Schubert besprechen: BitBook unterstützt keine Kreuzworträtsel, daher Anpassung der Übung und der Anleitung. Originalwortlaut der Anleitung: Suchen Sie aus dem Text die Wörter, zu denen die Erklärung passt, und lösen Sie das Rätsel. Die Buchstaben in den farbigen Kästchen senkrecht ergeben ein Nomen.||
+
+
+
+[.essay:bitmark--&article]
+[%A10b]
+[!Schreiben Sie eine Stellungnahme zum nachstehenden Text.] Achten Sie auf adäquaten Wortschatz und gelungene Satzverknüpfungen. Schreiben Sie ca. 250 Wörter.
+&&&
+Welche Gründe könnte es Ihrer Meinung nach geben, dass manche Sportler zu unerlaubten Mitteln (Doping) greifen? Können nationale und internationale Sportverbände etwas dagegen tun oder sollte man Doping legalisieren?
+
+
+
+[.match:bitmark--]
+[%A11b]
+[!Folgende Informationen haben Sie gehört oder gelesen. Geben Sie die Informationen weiter. Bilden Sie Sätze mit __sollen__.]
+===
+Der Boxer hat Probleme mit seiner rechten Hand. __(Gegenwart)__
+==
+Der Boxer soll Probleme mit seiner rechten Hand haben.[@example:Der Boxer **soll** Probleme mit seiner rechten Hand **haben**.][@longAnswer]
+===
+Der Boxer hatte Probleme mit seiner rechten Hand. __(Vergangenheit)__
+==
+Der Boxer soll Probleme mit seiner rechten Hand gehabt haben.[@example:Der Boxer **soll** Probleme mit seiner rechten Hand **gehabt haben**.][@longAnswer]
+===
+1. Die Sportler haben sich im Höhentrainingslager in der Schweiz auf den Wettkampf vorbereitet.
+==
+Die Sportler sollen sich im Höhentrainingslager in der Schweiz auf den Wettkampf vorbereitet haben.[@longAnswer]
+===
+2. Im Trainingslager hat sich der Trainer mit dem Torwart gestritten.
+==
+Im Trainingslager soll sich der Trainer mit dem Torwart gestritten haben.[@longAnswer]
+===
+3. Wegen des Streits ist der Cheftrainer zurückgetreten.
+==
+Wegen des Streits soll der Cheftrainer zurückgetreten sein.[@longAnswer]
+===
+4. Die Trainingsbedingungen waren schwierig.
+==
+Die Trainingsbedingungen sollen schwierig gewesen sein.[@longAnswer]
+===
+5. Das Eröffnungsspiel findet in der neuen Arena statt.
+==
+Das Eröffnungsspiel soll in der neuen Arena stattfinden.[@longAnswer]
+===
+6. Der Präsident des Olympischen Komitees hält die Eröffnungsansprache.
+==
+Der Präsident des Olympischen Komitees soll die Eröffnungsansprache halten.[@longAnswer]
+===
+7. Das Stadion wird erst eine Woche vor dem Spiel fertig.
+==
+Das Stadion soll erst eine Woche vor dem Spiel fertig sein.[@longAnswer]
+===
+8. Der Ausbau der Arena hat bis jetzt schon 25 Millionen Euro gekostet.[@longAnswer]
+==
+Der Ausbau der Arena soll bis jetzt schon 25 Millionen Euro gekostet haben.
+===
+
+
+
+[.match-solution-grouped]
+[%A13a] 
+[!Welche Verben passen? Ordnen Sie zu.] 
+===
+Olympisches Gold
+==
+gewinnen[@example]
+===
+die Schlittschuhe an den Nagel
+==
+hängen 
+===
+vom Amateur- ins Profilager
+==
+wechseln
+===
+große Erfolge
+==
+verzeichnen
+===
+die Flinte ins Korn
+==
+werfen
+===
+sich zum Training
+==
+schleppen
+===
+sich große Ziele
+==
+setzen
+===
+Siege beim Sport
+==
+erringen
+===
+eine Familie
+==
+gründen
+===
+eine Fernsehsendung
+==
+moderieren
+===
+die Sportkarriere
+==
+beenden
+===
+
+[=====b)]
+
+
+
+[.cloze-and-multiple-choice-text]
+[%A13b-1]
+[!Was kann man verlieren, was kann man gewinnen? Ordnen Sie die passenden Nomen mit dem richtigen Artikel im Akkusativ zu und erklären Sie die Wendungen.] 
+Man kann...
+[_die] Geduld [+verlieren][-gewinnen][-verlieren oder gewinnen].
+[_den] Eindruck [-verlieren][+gewinnen][-verlieren oder gewinnen].
+[_das] Gesicht [+verlieren][-gewinnen][-verlieren oder gewinnen].
+[_den] Mut [+verlieren][-gewinnen][-verlieren oder gewinnen].
+[_den] Überblick [-verlieren][-gewinnen][+verlieren oder gewinnen].
+[_die] Oberhand [-verlieren][+gewinnen][-verlieren oder gewinnen].
+[_die] Beherrschung [+verlieren][-gewinnen][-verlieren oder gewinnen].
+[_den] Verstand [+verlieren][-gewinnen][-verlieren oder gewinnen].
+[_den] Faden [+verlieren][-gewinnen][-verlieren oder gewinnen].
+||TBD Übung wurde auf zwei Bits aufgeteilt und die Instruktion entsprechend angepasst. Originalwortlaut: __Was kann man verlieren, was kann man gewinnen? Ordnen Sie die passenden Nomen mit dem richtigen Artikel im Akkusativ zu und erklären Sie die Wendungen. Bilden Sie zu drei Wendungen Beispielsätze.__]||
+||TBD Auswahl __"verlieren oder gewinnen"__]||
+||TBD: (1) Diese Übung wurde auf zwei Bits aufgeteilt. (2) Die Instruktion muss angepasst werden. Vorschlag für die neue Instruktion: "Was kann man verlieren, was kann man gewinnen? Ergänzen Sie zum Nomen den richtigen Artikel im Akkusativ und wählen Sie die richtige Antwort."||
+
+
+[.essay&image]
+[&image::http://docs.bitbook.education/bit-books/schubert_erkundungen_c1/web-resources/images/daumenrunter.jpg]
+[%A25]
+[!Was fällt Ihnen ein, wenn Sie das Wort Misserfolg hören?]
+
+
+
+[.cloze-instruction-grouped:bitmark--&article:bitmark--]
+[%A26a]
+[!Hier haben einige Leute etwas nicht richtig gemacht. Ergänzen Sie die passenden Verben mit dem Präfix __ver__.]
+Hier steht „mogen“ statt morgen. Du hast dich da [_verschrieben][!verschreiben][@example].
+1. Cornelius hätte Direktor werden können, aber mit dem gescheiterten Projekt hat er seine Chancen [_verspielt][!verspielen].
+2. Der Nachrichtensprecher hat sich gestern mehrmals [_versprochen][!versprechen].
+3. Die Kunden müssten schon lange hier sein, wo bleiben die nur? – Vielleicht haben sie sich [_verfahren][!verfahren]
+4. Anna ist todunglücklich. Sie war so aufgeregt, dass sie das Vorsprechen für die Filmrolle [_vergeigt][!vergeigen __(umg.)__] / [_vermasselt][!vermasseln __(umg.)__] hat.
+5. Hat Paul wirklich gesagt, er kommt um drei? Hast du dich vielleicht [_verhört][!verhören]?
+6. Die Zahlen stimmen schon wieder nicht. Du hast dich zweimal [_verrechnet][!verrechnen].
+&&&
+Verben mit den nicht trennbaren Präfixen __ver-, zer-__ und _miss-__ bezeichnen oft Ereignisse oder Vorgänge, bei denen ein Fehler passiert, etwas schiefläuft oder kaputtgeht.
+
+
+
+[.multiple-choice-text:bitmark--&article:bitmark--]
+[%A26b]
+[!Verben mit __zer-__. Was kann man miteinander kombinieren? Ordnen Sie zu.]
+eine Schere [+zerschneidet][-zermürbt][-zerfällt][-zerreißt][-zerplatzt][-zerbricht][-zerstört][@example] [+Papier][-leicht][-die Rechnung][-wie eine Seifenblase][-ganze Städte][-die Teilnehmer][-langsam][@example]
+ein Traum [-zerschneidet][-zermürbt][-zerfällt][-zerreißt][+zerplatzt][-zerbricht][-zerstört] [-Papier][-leicht][-die Rechnung][+wie eine Seifenblase][-ganze Städte][-die Teilnehmer][-langsam]
+eine lange Sitzung [-zerschneidet][+zermürbt][-zerfällt][-zerreißt][-zerplatzt][-zerbricht][-zerstört] [-Papier][-leicht][-die Rechnung][-wie eine Seifenblase][-ganze Städte][+die Teilnehmer][-langsam]
+dieses Glas [-zerschneidet][-zermürbt][-zerfällt][-zerreißt][-zerplatzt][+zerbricht][-zerstört] [-Papier][+leicht][-die Rechnung][-wie eine Seifenblase][-ganze Städte][-die Teilnehmer][-langsam]
+ein altes Haus [-zerschneidet][-zermürbt][+zerfällt][-zerreißt][-zerplatzt][-zerbricht][-zerstört] [-Papier][-leicht][-die Rechnung][-wie eine Seifenblase][-ganze Städte][-die Teilnehmer][+langsam]
+ein Tornado [-zerschneidet][-zermürbt][-zerfällt][-zerreißt][-zerplatzt][-zerbricht][+zerstört] [-Papier][-leicht][-die Rechnung][-wie eine Seifenblase][+ganze Städte][-die Teilnehmer][-langsam]
+der wütende Kunde [-zerschneidet][-zermürbt][-zerfällt][+zerreißt][-zerplatzt][-zerbricht][-zerstört] [-Papier][-leicht][+die Rechnung][-wie eine Seifenblase][-ganze Städte][-die Teilnehmer][-langsam]
+&&&
+Verben mit den nicht trennbaren Präfixen __ver-, zer-__ und __miss-__ bezeichnen oft Ereignisse oder Vorgänge, bei denen ein Fehler passiert, etwas schiefläuft oder kaputtgeht.
+
+
+[.cloze-instruction-grouped:bitmark--&article:bitmark--]
+[%A26c]
+[!Welches Verb passt? Ergänzen Sie Verben mit __miss-.__]
+1. Die Kollegen [_missbilligen][!missbilligen] die Vorschläge zur Verlängerung der Arbeitszeit.
+2. Wir halten nicht viel vom Geschäftsgebaren der Konkurrenz. Es [_missfällt][!missfallen] uns.
+3. Die Vorschriften werden von einigen Mitarbeitern [_missachtet][!missachten].
+4. Die Mitarbeiter haben kein Vertrauen in die neue Geschäftsleitung. Sie [_misstrauen][!misstrauen] ihr.
+5. Der Versuch war nicht erfolgreich. Er ist [_misstrauen][!misstrauen] / [_missglückt][!missglücken].
+6. Ich dachte, wir hätten etwas anderes vereinbart. - Dann haben wir uns wohl [_missverstanden][!missverstehen]
+&&&
+Verben mit den nicht trennbaren Präfixen __ver-, zer-__ und __miss-__ bezeichnen oft Ereignisse oder Vorgänge, bei denen ein Fehler passiert, etwas schiefläuft oder kaputtgeht.
+
+
+
+[.interview&audio]
+[%A27a]
+[&audio::http://docs.bitbook.education/bit-books/schubert_erkundungen_c1/web-resources/audio/06_erkundungen_c1.mp3]
+[!Hören Sie Teil 1 und beantworten Sie die folgenden Fragen in Stichworten. Lesen Sie zuerst die Fragen.]
+
+===
+1a) Welche Rolle spielt das Scheitern in der Kunst?[@example:Es ist eines der wichtigsten Themen. Verlierer sind oft die Hauptpersonen. Die Kunst kann ohne das Scheitern gar nicht leben.][@shortAnswer]
+===
+1b) Welche Rolle spielt das Scheitern in der Gesellschaft?[@sampleSolution:Es ist ein Tabu./Es wird aus unserem Leben ausgeblendet./Misserfolge werden nicht erwähnt.][@shortAnswer]
+===
+2. Welche Beispiele werden für das Scheitern angeführt? Nennen Sie zwei davon.[@sampleSolution:schlechte Zensuren zu bekommen/an einer Universität nicht angenommen zu werden/nicht den richtigen Partner zu finden/ein Projekt in den Sand zu setzen/arbeitslos zu werden][@shortAnswer]
+===
+3. Worauf legt unsere heutige Gesellschaft Wert?[@sampleSolution:auf Erfolge][@shortAnswer]
+===
+4. Wie steht die Gesellschaft zum Misserfolg?[@sampleSolution:Die Gesellschaft kann damit nicht umgehen./Es gibt keine Verliererkultur./Verlieren macht einsam.][@shortAnswer]
+===
+
+
+
+[.multiple-response:bitmark--]
+[%C3.1]
+||TBD: Aufteilung auf acht Bits, entsprechende Anpassung der Instruktion. Originalwortlaut: Ordnen Sie den Modalverben passende Bedeutungen zu.||
+[!Ordnen Sie dem Modalverb **mögen/nicht mögen** die passende Bedeutungen zu.]
+[-es besteht die Möglichkeit/Gelegenheit] 
+[-eine andere Person wünscht etwas von jemandem]
+[-jemand ist in der Lage, etwas zu tun]
+[-etwas ist notwendig]
+[-etwas ist erlaubt]
+[-jemand hat den Auftrag]
+[+jemand findet etwas gut]
+[+jemand kann etwas/jemanden nicht leiden]
+[-jemand hat gehört oder gelesen]
+[-jemand hat die Absicht]
+[-es ist eine Pflicht]
+[-jemand ist nicht in der Lage, etwas zu tun]
+[-es gibt keine Gelegenheit ]
+[-es ist ratsam]
+[-es ist verboten]
+[-es wird empfohlen]
+[-es ist nicht erwünscht]
+[-es ist nicht notwendig]
+[-in der Zeitung wurde berichtet]
+[-jemand ist nicht bereit]
+[-jemand hat etwas vor]
+[-jemand hat den Wunsch]
+
