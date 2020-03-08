@@ -1,3 +1,3 @@
 [.essay]
 [%A1d]
-[!Sind Sie ein Fußball-Fan? Wenn ja, beschreiben Sie Ihre Aktivitäten. Wenn nein, warum nicht?]
+[!Sind Sie ein Fussball-Fan? Wenn ja, beschreiben Sie Ihre Aktivitäten. Wenn nein, warum nicht?]
