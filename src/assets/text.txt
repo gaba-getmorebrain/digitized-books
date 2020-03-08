@@ -2,8 +2,8 @@
 
 [.multiple-choice]
 [!What color is milk?]
-[+whiteee]
-[-reeeed]
+[+white]
+[-red]
 [-blue]
 
 [.essay]
